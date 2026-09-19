@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Traffic Nashik</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/traffic-icon.png">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 90px;
+            background: rgba(255, 255, 255, 0.96);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Logo */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-size: 27px;
+            font-weight: 700;
+            color: #29304b;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+
+            background: #7256e8;
+            color: white;
+
+            border-radius: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+        }
+
+        .logo span {
+            color: #7054e6;
+        }
+
+        /* Navigation */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 45px;
+            height: 100%;
+        }
+
+        .nav-item {
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            text-decoration: none;
+            color: #4a506c;
+
+            font-size: 16px;
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 2px;
+        }
+
+        .nav-item:hover {
+            color: #7054e6;
+        }
+
+        /* Active Home */
+
+        .nav-item.active {
+            color: #7054e6;
+        }
+
+        .nav-item.active::after {
+            content: "";
+
+            position: absolute;
+            bottom: 8px;
+
+            width: 70px;
+            height: 3px;
+
+            border-radius: 10px;
+
+            background: #7054e6;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: calc(100vh - 90px);
+
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            text-align: center;
+
+            overflow: hidden;
+
+            
+    min-height: calc(100vh - 90px);
+
+    background-image: url("C:\\Users\\acer\\OneDrive\\Desktop\\TY_Project\\firstpage.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+        /* ================= HERO CONTENT ================= */
+
+        .hero-content {
+            padding-top: 95px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(60px, 7vw, 100px);
+
+            line-height: 1.05;
+
+            font-weight: 800;
+
+            color: #252a41;
+
+            margin-bottom: 18px;
+        }
+
+        .hero h1 .purple {
+            color: #7054e6;
+        }
+
+        .subtitle {
+            font-size: 23px;
+
+            color: #69728f;
+
+            margin-bottom: 38px;
+        }
+
+
+        /* ================= START BUTTON ================= */
+
+        .start-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 15px;
+
+            padding: 17px 38px;
+
+            min-width: 265px;
+
+            border: none;
+            border-radius: 40px;
+
+            background: linear-gradient(
+                135deg,
+                #7657ed,
+                #6648df
+            );
+
+            color: white;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 21px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px rgba(112, 84, 230, 0.35);
+
+            transition: all 0.3s ease;
+        }
+
+        .start-btn .arrow {
+            font-size: 27px;
+            line-height: 1;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 17px 35px rgba(112, 84, 230, 0.42);
+        }
+
+        .start-btn:active {
+            transform: translateY(-1px);
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                padding: 0 25px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .logo-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 23px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-item {
+                font-size: 13px;
+            }
+
+            .nav-icon {
+                font-size: 20px;
+            }
+
+            .hero-content {
+                padding-top: 70px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: auto;
+                min-height: 80px;
+                flex-direction: column;
+                padding: 15px;
+                gap: 12px;
+            }
+
+            .nav-links {
+                height: 60px;
+                gap: 20px;
+            }
+
+            .nav-item.active::after {
+                bottom: 0;
+            }
+
+            .hero {
+                min-height: calc(100vh - 150px);
+            }
+
+            .hero-content {
+                padding: 60px 20px 0;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .start-btn {
+                min-width: 220px;
+                font-size: 18px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <!-- Logo -->
+        <div class="logo">
+
+            <div class="logo-icon">
+                🚦
+            </div>
+
+            <div>
+                Smart Traffic <span>Nashik</span>
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+        <nav class="nav-links">
+
+            <a href="index.html" class="nav-item active">
+                <div class="nav-icon">⌂</div>
+                <div>Home</div>
+            </a>
+
+            <a href="live-map.html" class="nav-item">
+                <div class="nav-icon">🗺</div>
+                <div>Live Map</div>
+            </a>
+
+            <a href="route.html" class="nav-item">
+                <div class="nav-icon">⌖</div>
+                <div>Route</div>
+            </a>
+
+            <a href="alerts.html" class="nav-item">
+                <div class="nav-icon">♧</div>
+                <div>Alerts</div>
+            </a>
+
+            <a href="about.html" class="nav-item">
+                <div class="nav-icon">ⓘ</div>
+                <div>About</div>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <main class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Find Your
+                <br>
+                <span class="purple">Best Route</span>
+            </h1>
+
+            <p class="subtitle">
+                Smarter traffic. Shorter travel. A better Nashik.
+            </p>
+
+            <button class="start-btn" onclick="startRoute()">
+
+                <span>Start</span>
+
+                <span class="arrow">→</span>
+
+            </button>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function startRoute() {
+
+            window.location.href = "route.html";
+
+        }
+
+    </script>
+
+</body>
+</html>
