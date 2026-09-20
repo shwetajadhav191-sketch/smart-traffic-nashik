@@ -1,0 +1,158 @@
+/* ================= HERO ================= */
+
+.hero {
+    min-height: calc(100vh - 90px);
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background-image: url("../images/firstpage.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* ================= HERO CONTENT ================= */
+
+.hero-content {
+    padding-top: 95px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ================= HERO HEADING ================= */
+
+.hero h1 {
+    font-size: clamp(60px, 7vw, 100px);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    color: #252a41;
+
+    margin-bottom: 18px;
+}
+
+.hero h1 .purple {
+    color: #7054e6;
+}
+
+
+/* ================= SUBTITLE ================= */
+
+.subtitle {
+    font-size: 23px;
+
+    color: #69728f;
+
+    margin-bottom: 38px;
+}
+
+
+/* ================= START BUTTON ================= */
+
+.start-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 17px 38px;
+
+    min-width: 265px;
+
+    border: none;
+
+    border-radius: 40px;
+
+    background: linear-gradient(
+        135deg,
+        #7657ed,
+        #6648df
+    );
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 21px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px rgba(112, 84, 230, 0.35);
+
+    transition: all 0.3s ease;
+}
+
+
+.start-btn .arrow {
+    font-size: 27px;
+    line-height: 1;
+}
+
+
+.start-btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 17px 35px rgba(112, 84, 230, 0.42);
+}
+
+
+.start-btn:active {
+    transform: translateY(-1px);
+}
+
+
+/* ================= HOME RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .hero-content {
+        padding-top: 70px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: calc(100vh - 150px);
+    }
+
+    .hero-content {
+        padding: 60px 20px 0;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .start-btn {
+        min-width: 220px;
+        font-size: 18px;
+    }
+}
