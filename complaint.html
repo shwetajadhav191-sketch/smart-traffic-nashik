@@ -9,8 +9,7 @@
 
     <title>Report Traffic Problem - Smart Traffic Nashik</title>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <link rel="stylesheet" href="css\complaint.css">
 
@@ -82,20 +81,51 @@
 
                 <!-- ACCIDENT -->
 
-                <button class="category" onclick="selectCategory(this, 'Accident')">
+                <button class="category" onclick="selectCategory(this,'Accident')">
 
-                    <div class="icon-circle pink">
+                    <div class="icon-circle accident">
 
-                        <img src="https://img.icons8.com/3d-fluency/94/car-crash.png" alt="Accident">
+                        <svg class="accident-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+
+                            <!-- Car body -->
+                            <path d="M22 65 L30 43 Q33 37 42 37 H78 Q87 37 90 44 L98 65 V78 H22 Z" fill="#e53935" />
+
+                            <!-- Car roof -->
+                            <path d="M36 42 L43 25 H76 L86 42 Z" fill="#ff6b6b" />
+
+                            <!-- Windows -->
+                            <path d="M45 29 H56 V40 H40 Z" fill="#dff4ff" />
+
+                            <path d="M59 29 H73 L80 40 H59 Z" fill="#dff4ff" />
+
+                            <!-- Wheels -->
+                            <circle cx="38" cy="77" r="10" fill="#292929" />
+                            <circle cx="82" cy="77" r="10" fill="#292929" />
+
+                            <circle cx="38" cy="77" r="4" fill="#bdbdbd" />
+                            <circle cx="82" cy="77" r="4" fill="#bdbdbd" />
+
+                            <!-- Headlights -->
+                            <rect x="25" y="53" width="9" height="7" rx="3" fill="#fff176" />
+
+                            <rect x="86" y="53" width="9" height="7" rx="3" fill="#fff176" />
+
+                            <!-- Crash marks -->
+                            <path d="M102 28 L113 18" stroke="#ff9800" stroke-width="5" stroke-linecap="round" />
+
+                            <path d="M106 40 L118 37" stroke="#ff9800" stroke-width="5" stroke-linecap="round" />
+
+                            <path d="M102 15 L106 5" stroke="#ff9800" stroke-width="5" stroke-linecap="round" />
+
+                        </svg>
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Accident
                     </span>
 
                 </button>
-
 
                 <!-- ROAD BLOCK -->
 
