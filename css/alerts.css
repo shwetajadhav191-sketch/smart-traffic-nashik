@@ -1,3 +1,7 @@
+
+
+/* RESET */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,47 +9,57 @@
 }
 
 
+/* BODY */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f3f6ff;
     color: #292e46;
+    min-height: 100vh;
 }
 
 
-/* HEADER */
+/* ========================================
+   HEADER
+======================================== */
 
 .header {
-    background: white;
-    padding: 28px 20px;
+    background: #ffffff;
+    padding: 30px 20px;
     text-align: center;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
 }
 
 
 .header h1 {
     color: #6850e8;
-    font-size: 34px;
+    font-size: 36px;
     font-weight: 700;
+    margin-bottom: 8px;
 }
 
 
 .header p {
     color: #777b8c;
-    margin-top: 8px;
     font-size: 15px;
 }
 
 
-/* CONTAINER */
+/* ========================================
+   MAIN CONTAINER
+======================================== */
 
 .container {
     width: 92%;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 35px auto;
 }
 
 
-/* PAGE TITLE */
+/* ========================================
+   PAGE TITLE
+======================================== */
 
 .page-title {
     margin-bottom: 25px;
@@ -53,65 +67,87 @@ body {
 
 
 .page-title h2 {
-    font-size: 27px;
+    font-size: 28px;
+    color: #292e46;
     margin-bottom: 8px;
 }
 
 
 .page-title p {
     color: #777b8c;
+    font-size: 15px;
 }
 
 
-/* ALERT GRID */
+/* ========================================
+   ALERT GRID
+======================================== */
 
 .alerts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 22px;
 }
 
 
-/* ALERT CARD */
+/* ========================================
+   ALERT CARD
+======================================== */
 
 .alert-card {
-    background: white;
+    background: #ffffff;
+
     border-radius: 20px;
+
     padding: 22px;
 
     display: flex;
+
     gap: 18px;
 
     box-shadow:
-        0 7px 25px rgba(75, 85, 130, 0.09);
+        0 7px 25px rgba(75, 85, 130, 0.10);
 
     border: 2px solid transparent;
 
-    transition: 0.25s;
+    transition: all 0.3s ease;
 }
 
+
+/* CARD HOVER */
 
 .alert-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+
+    border-color: #ddd6ff;
 
     box-shadow:
-        0 10px 28px rgba(75, 85, 130, 0.14);
+        0 12px 30px rgba(75, 85, 130, 0.16);
 }
 
 
-/* ALERT ICON */
+/* ========================================
+   ALERT ICON
+======================================== */
 
 .alert-icon {
     min-width: 70px;
+
+    width: 70px;
+
     height: 70px;
 
     border-radius: 20px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     font-size: 36px;
+
+    flex-shrink: 0;
 
     box-shadow:
         inset 0 4px 7px rgba(255, 255, 255, 0.7),
@@ -120,127 +156,183 @@ body {
 }
 
 
-/* COLORS */
+/* ========================================
+   ICON COLORS
+======================================== */
 
 .red {
-    background: linear-gradient(145deg, #ffd5d5, #ff9d9d);
+    background: linear-gradient(145deg,
+            #ffd5d5,
+            #ff9d9d);
 }
 
 
 .orange {
-    background: linear-gradient(145deg, #ffe3c0, #ffbd73);
+    background: linear-gradient(145deg,
+            #ffe3c0,
+            #ffbd73);
 }
 
 
 .yellow {
-    background: linear-gradient(145deg, #fff2b5, #ffda63);
+    background: linear-gradient(145deg,
+            #fff2b5,
+            #ffda63);
 }
 
 
 .blue {
-    background: linear-gradient(145deg, #d5efff, #91d5ff);
+    background: linear-gradient(145deg,
+            #d5efff,
+            #91d5ff);
 }
 
 
 .purple {
-    background: linear-gradient(145deg, #e3d8ff, #bda7ff);
+    background: linear-gradient(145deg,
+            #e3d8ff,
+            #bda7ff);
 }
 
 
 .green {
-    background: linear-gradient(145deg, #d8f5dc, #9cdda5);
+    background: linear-gradient(145deg,
+            #d8f5dc,
+            #9cdda5);
 }
 
 
-/* ALERT CONTENT */
+/* ========================================
+   ALERT CONTENT
+======================================== */
 
 .alert-content {
     flex: 1;
+    min-width: 0;
 }
 
 
 .alert-content h3 {
-    font-size: 18px;
-    margin-bottom: 7px;
+    font-size: 19px;
+
     color: #292e46;
+
+    margin-bottom: 8px;
 }
 
 
-.alert-content p {
-    color: #6f7382;
-    font-size: 14px;
-    line-height: 21px;
-    margin-bottom: 10px;
-}
-
-
-/* LOCATION */
+/* ========================================
+   LOCATION
+======================================== */
 
 .location {
     font-size: 13px;
+
     color: #7054e6;
+
     font-weight: bold;
+
     margin-bottom: 10px;
 }
 
 
-/* BOTTOM */
+/* ========================================
+   ALERT DESCRIPTION
+======================================== */
+
+.alert-content p {
+    color: #6f7382;
+
+    font-size: 14px;
+
+    line-height: 21px;
+
+    margin-bottom: 13px;
+}
+
+
+/* ========================================
+   ALERT BOTTOM
+======================================== */
 
 .alert-bottom {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     gap: 10px;
 }
 
 
+/* TIME */
+
 .time {
     font-size: 12px;
+
     color: #9295a2;
 }
 
 
-/* BADGES */
+/* ========================================
+   SEVERITY BADGES
+======================================== */
 
 .badge {
-    padding: 5px 11px;
+    padding: 5px 12px;
+
     border-radius: 20px;
+
     font-size: 11px;
+
     font-weight: bold;
+
+    letter-spacing: 0.5px;
 }
 
 
+/* HIGH */
+
 .high {
     background: #ffe0e0;
+
     color: #d63333;
 }
 
 
+/* MEDIUM */
+
 .medium {
     background: #fff0cf;
+
     color: #c57a00;
 }
 
 
+/* LOW */
+
 .low {
     background: #dcf5e2;
+
     color: #268344;
 }
 
 
-/* EMERGENCY */
+/* ========================================
+   EMERGENCY SECTION
+======================================== */
 
 .emergency {
     margin-top: 30px;
 
-    background:
-        linear-gradient(135deg,
+    background: linear-gradient(135deg,
             #7356eb,
             #6243dc);
 
-    color: white;
+    color: #ffffff;
 
-    padding: 25px;
+    padding: 28px;
 
     border-radius: 22px;
 
@@ -250,65 +342,89 @@ body {
 
 
 .emergency h2 {
-    font-size: 21px;
+    font-size: 22px;
+
     margin-bottom: 8px;
 }
 
 
 .emergency p {
     font-size: 14px;
+
     opacity: 0.9;
-    margin-bottom: 18px;
+
+    margin-bottom: 20px;
 }
 
 
-/* EMERGENCY BUTTONS */
+/* ========================================
+   EMERGENCY BUTTONS
+======================================== */
 
 .emergency-buttons {
     display: flex;
+
     gap: 12px;
+
     flex-wrap: wrap;
 }
 
 
 .emergency-btn {
-    background: white;
+    background: #ffffff;
+
     color: #6243dc;
 
     border: none;
 
-    padding: 11px 20px;
+    padding: 12px 20px;
 
     border-radius: 25px;
+
+    font-size: 14px;
 
     font-weight: bold;
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition: all 0.25s ease;
 }
 
 
 .emergency-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
 
-/* REFRESH */
+.emergency-btn:active {
+    transform: scale(0.97);
+}
+
+
+/* ========================================
+   REFRESH SECTION
+======================================== */
 
 .refresh-section {
     text-align: center;
+
     margin-top: 30px;
 }
 
 
+/* REFRESH BUTTON */
+
 .refresh-btn {
-    background: white;
+    background: #ffffff;
+
     color: #7054e6;
 
     border: 2px solid #7054e6;
 
-    padding: 12px 25px;
+    padding: 12px 27px;
 
     border-radius: 25px;
 
@@ -318,68 +434,189 @@ body {
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition: all 0.25s ease;
 }
 
 
 .refresh-btn:hover {
     background: #7054e6;
-    color: white;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(112, 84, 230, 0.25);
 }
 
 
-/* FOOTER */
+/* ========================================
+   FOOTER
+======================================== */
 
 footer {
     text-align: center;
 
-    padding: 25px;
+    padding: 25px 20px;
 
     margin-top: 20px;
 
     color: #858899;
 
     font-size: 13px;
+
+    line-height: 22px;
 }
 
 
-/* TABLET */
+/* ========================================
+   TABLET RESPONSIVE
+======================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
     .alerts {
         grid-template-columns: 1fr;
     }
 
-    .header h1 {
-        font-size: 27px;
-    }
 
     .container {
-        width: 94%;
+        width: 90%;
+    }
+
+
+    .header h1 {
+        font-size: 31px;
     }
 }
 
 
-/* MOBILE */
+/* ========================================
+   MOBILE RESPONSIVE
+======================================== */
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
+
+    .header {
+        padding: 25px 15px;
+    }
+
+
+    .header h1 {
+        font-size: 27px;
+    }
+
+
+    .header p {
+        font-size: 14px;
+    }
+
+
+    .container {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+
+    .page-title h2 {
+        font-size: 24px;
+    }
+
+
+    .page-title p {
+        font-size: 14px;
+    }
+
 
     .alert-card {
         padding: 17px;
+
+        gap: 13px;
     }
+
 
     .alert-icon {
         min-width: 58px;
+
+        width: 58px;
+
         height: 58px;
+
         font-size: 28px;
+
+        border-radius: 17px;
     }
+
 
     .alert-content h3 {
         font-size: 16px;
     }
 
+
     .alert-content p {
         font-size: 13px;
+
+        line-height: 19px;
     }
+
+
+    .location {
+        font-size: 12px;
+    }
+
+
+    .time {
+        font-size: 11px;
+    }
+
+
+    .badge {
+        font-size: 10px;
+
+        padding: 4px 9px;
+    }
+
+
+    .emergency {
+        padding: 22px;
+    }
+
+
+    .emergency h2 {
+        font-size: 19px;
+    }
+
+
+    .emergency-buttons {
+        flex-direction: column;
+    }
+
+
+    .emergency-btn {
+        width: 100%;
+    }
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 350px) {
+
+    .alert-card {
+        flex-direction: column;
+    }
+
+
+    .alert-icon {
+        width: 60px;
+    }
+
+
+    .alert-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
 }
