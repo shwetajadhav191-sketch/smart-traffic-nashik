@@ -20,25 +20,22 @@
 
 
     <!-- =========================
-     HEADER
-========================= -->
+         HEADER
+    ========================= -->
 
     <header class="header">
 
         <h1>
-
-            <img class="header-icon" src="https://img.icons8.com/3d-fluency/94/complaint.png" alt="Report">
-
+            <i class="fa-solid fa-triangle-exclamation header-icon"></i>
             Report a Traffic Problem
-
         </h1>
 
     </header>
 
 
     <!-- =========================
-     MAIN
-========================= -->
+         MAIN
+    ========================= -->
 
     <main class="container">
 
@@ -49,30 +46,29 @@
                 What's the problem?
             </h2>
 
-
             <p class="subtitle">
                 Select a category and describe the issue.
             </p>
 
 
             <!-- =========================
-             CATEGORY ICONS
-        ========================= -->
+                 CATEGORY GRID
+            ========================= -->
 
             <div class="categories">
 
 
                 <!-- TRAFFIC JAM -->
 
-                <button class="category" onclick="selectCategory(this, 'Traffic Jam')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Traffic Jam')">
 
-                    <div class="icon-circle blue">
+                    <div class="icon-circle traffic-jam">
 
                         <img src="https://img.icons8.com/3d-fluency/94/car.png" alt="Traffic Jam">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Traffic Jam
                     </span>
 
@@ -81,36 +77,30 @@
 
                 <!-- ACCIDENT -->
 
-                <button class="category" onclick="selectCategory(this,'Accident')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Accident')">
 
                     <div class="icon-circle accident">
 
                         <svg class="accident-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
 
-                            <!-- Car body -->
                             <path d="M22 65 L30 43 Q33 37 42 37 H78 Q87 37 90 44 L98 65 V78 H22 Z" fill="#e53935" />
 
-                            <!-- Car roof -->
                             <path d="M36 42 L43 25 H76 L86 42 Z" fill="#ff6b6b" />
 
-                            <!-- Windows -->
                             <path d="M45 29 H56 V40 H40 Z" fill="#dff4ff" />
 
                             <path d="M59 29 H73 L80 40 H59 Z" fill="#dff4ff" />
 
-                            <!-- Wheels -->
                             <circle cx="38" cy="77" r="10" fill="#292929" />
                             <circle cx="82" cy="77" r="10" fill="#292929" />
 
                             <circle cx="38" cy="77" r="4" fill="#bdbdbd" />
                             <circle cx="82" cy="77" r="4" fill="#bdbdbd" />
 
-                            <!-- Headlights -->
                             <rect x="25" y="53" width="9" height="7" rx="3" fill="#fff176" />
 
                             <rect x="86" y="53" width="9" height="7" rx="3" fill="#fff176" />
 
-                            <!-- Crash marks -->
                             <path d="M102 28 L113 18" stroke="#ff9800" stroke-width="5" stroke-linecap="round" />
 
                             <path d="M106 40 L118 37" stroke="#ff9800" stroke-width="5" stroke-linecap="round" />
@@ -127,34 +117,35 @@
 
                 </button>
 
+
                 <!-- ROAD BLOCK -->
 
-                <button class="category" onclick="selectCategory(this, 'Road Block')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Road Block')">
 
-                    <div class="icon-circle yellow">
+                    <div class="icon-circle road-block">
 
                         <img src="https://img.icons8.com/3d-fluency/94/traffic-barricade.png" alt="Road Block">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Road Block
                     </span>
 
                 </button>
 
 
-                <!-- SIGNAL -->
+                <!-- SIGNAL PROBLEM -->
 
-                <button class="category" onclick="selectCategory(this, 'Signal Problem')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Signal Problem')">
 
-                    <div class="icon-circle pink">
+                    <div class="icon-circle signal">
 
                         <img src="https://img.icons8.com/3d-fluency/94/traffic-light.png" alt="Signal Problem">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Signal Problem
                     </span>
 
@@ -163,15 +154,15 @@
 
                 <!-- DAMAGED ROAD -->
 
-                <button class="category" onclick="selectCategory(this, 'Damaged Road')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Damaged Road')">
 
-                    <div class="icon-circle peach">
+                    <div class="icon-circle damaged-road">
 
                         <img src="https://img.icons8.com/3d-fluency/94/road.png" alt="Damaged Road">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Damaged Road
                     </span>
 
@@ -180,15 +171,15 @@
 
                 <!-- ILLEGAL PARKING -->
 
-                <button class="category" onclick="selectCategory(this, 'Illegal Parking')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Illegal Parking')">
 
-                    <div class="icon-circle lavender">
+                    <div class="icon-circle parking">
 
                         <img src="https://img.icons8.com/3d-fluency/94/parking.png" alt="Illegal Parking">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Illegal Parking
                     </span>
 
@@ -197,32 +188,32 @@
 
                 <!-- POTHOLE -->
 
-                <button class="category" onclick="selectCategory(this, 'Pothole')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Pothole')">
 
-                    <div class="icon-circle blue">
+                    <div class="icon-circle pothole">
 
                         <img src="https://img.icons8.com/3d-fluency/94/road-closure.png" alt="Pothole">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Pothole
                     </span>
 
                 </button>
 
 
-                <!-- WRONG SIDE -->
+                <!-- WRONG SIDE DRIVING -->
 
-                <button class="category" onclick="selectCategory(this, 'Wrong Side Driving')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Wrong Side Driving')">
 
-                    <div class="icon-circle cyan">
+                    <div class="icon-circle wrong-side">
 
                         <img src="https://img.icons8.com/3d-fluency/94/no-entry.png" alt="Wrong Side Driving">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Wrong Side Driving
                     </span>
 
@@ -231,15 +222,15 @@
 
                 <!-- STREET LIGHT -->
 
-                <button class="category" onclick="selectCategory(this, 'Street Light')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Street Light')">
 
-                    <div class="icon-circle yellow">
+                    <div class="icon-circle street-light">
 
                         <img src="https://img.icons8.com/3d-fluency/94/street-lamp.png" alt="Street Light">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Street Light
                     </span>
 
@@ -248,49 +239,49 @@
 
                 <!-- WATERLOGGING -->
 
-                <button class="category" onclick="selectCategory(this, 'Waterlogging')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Waterlogging')">
 
-                    <div class="icon-circle blue">
+                    <div class="icon-circle water">
 
                         <img src="https://img.icons8.com/3d-fluency/94/water.png" alt="Waterlogging">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Waterlogging
                     </span>
 
                 </button>
 
 
-                <!-- SIGN BOARD -->
+                <!-- MISSING SIGN BOARD -->
 
-                <button class="category" onclick="selectCategory(this, 'Missing Sign Board')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Missing Sign Board')">
 
-                    <div class="icon-circle peach">
+                    <div class="icon-circle sign-board">
 
                         <img src="https://img.icons8.com/3d-fluency/94/signpost.png" alt="Missing Sign Board">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Missing Sign Board
                     </span>
 
                 </button>
 
 
-                <!-- TRAFFIC VIOLATION -->
+                <!-- TRAFFIC RULE VIOLATION -->
 
-                <button class="category" onclick="selectCategory(this, 'Traffic Rule Violation')">
+                <button type="button" class="category" onclick="selectCategory(this, 'Traffic Rule Violation')">
 
-                    <div class="icon-circle pink">
+                    <div class="icon-circle violation">
 
                         <img src="https://img.icons8.com/3d-fluency/94/error.png" alt="Traffic Rule Violation">
 
                     </div>
 
-                    <span>
+                    <span class="category-name">
                         Traffic Rule Violation
                     </span>
 
@@ -300,40 +291,54 @@
             </div>
 
 
-            <!-- SELECTED CATEGORY -->
+            <!-- =========================
+                 SELECTED CATEGORY
+            ========================= -->
 
             <div id="selectedCategory" class="selected-category">
 
             </div>
 
 
-            <!-- LOCATION -->
+            <!-- =========================
+                 LOCATION
+            ========================= -->
 
             <label for="location">
                 Location
             </label>
 
-
             <input type="text" id="location" placeholder="Example: Dwarka, Nashik">
 
 
-            <!-- DESCRIPTION -->
+            <!-- =========================
+                 DESCRIPTION
+            ========================= -->
 
             <label for="description">
                 Describe the problem
             </label>
 
-
             <textarea id="description" placeholder="Describe the traffic problem..."></textarea>
 
 
-            <!-- SUBMIT -->
+            <!-- =========================
+                 SUBMIT
+            ========================= -->
 
-            <button class="submit-btn" onclick="submitComplaint()">
+            <button type="button" class="submit-btn" onclick="submitComplaint()">
 
-                ➤ &nbsp; Submit Complaint
+                <i class="fa-solid fa-paper-plane"></i>
+                &nbsp; Submit Complaint
 
             </button>
+
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div id="successMessage" class="success-message">
+
+            </div>
 
 
         </div>
@@ -341,7 +346,9 @@
     </main>
 
 
+    <!-- JAVASCRIPT -->
 
+    <script src="js/complaint.js"></script>
 
 </body>
 
