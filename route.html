@@ -9,101 +9,10 @@
     <title>Route Suggestion - Smart Traffic Nashik</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css\route.css">
 
-    <style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7ff;
-            color: #292e46;
-        }
-
-        .header {
-            background: white;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        .header h1 {
-            color: #7054e6;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 900px;
-            margin: 40px auto;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            margin-bottom: 25px;
-        }
-
-        .card h2 {
-            color: #7054e6;
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 13px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 15px;
-        }
-
-        .route-btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 30px;
-            background: #7054e6;
-            color: white;
-            font-size: 17px;
-            cursor: pointer;
-        }
-
-        .route-btn:hover {
-            background: #5d43d2;
-        }
-
-        .complaint-btn {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 30px;
-            background: #f1edff;
-            color: #7054e6;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        .complaint-btn:hover {
-            background: #e5dfff;
-        }
-
-    </style>
 
 </head>
 
@@ -131,22 +40,14 @@
                 Starting Location
             </label>
 
-            <input
-                type="text"
-                id="from"
-                placeholder="Enter starting location"
-            >
+            <input type="text" id="from" placeholder="Enter starting location">
 
 
             <label for="destination">
                 Destination
             </label>
 
-            <input
-                type="text"
-                id="destination"
-                placeholder="Enter destination"
-            >
+            <input type="text" id="destination" placeholder="Enter destination">
 
 
             <button class="route-btn" onclick="findRoute()">
