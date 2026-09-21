@@ -7,6 +7,8 @@ let selectedCategory = "";
 
 function selectCategory(button, category) {
 
+    // Remove selected class from all categories
+
     document
         .querySelectorAll(".category")
         .forEach(function (item) {
@@ -16,11 +18,17 @@ function selectCategory(button, category) {
         });
 
 
+    // Add selected class to clicked category
+
     button.classList.add("selected");
 
 
+    // Store selected category
+
     selectedCategory = category;
 
+
+    // Show selected category
 
     let selected =
         document.getElementById("selectedCategory");
@@ -31,12 +39,11 @@ function selectCategory(button, category) {
 
     selected.innerHTML =
         "Selected Category: " + category;
-
 }
 
 
 /* =========================
-   SUBMIT
+   SUBMIT COMPLAINT
 ========================= */
 
 function submitComplaint() {
@@ -55,6 +62,8 @@ function submitComplaint() {
             .trim();
 
 
+    /* CHECK CATEGORY */
+
     if (selectedCategory === "") {
 
         alert(
@@ -64,6 +73,8 @@ function submitComplaint() {
         return;
     }
 
+
+    /* CHECK LOCATION */
 
     if (location === "") {
 
@@ -75,6 +86,8 @@ function submitComplaint() {
     }
 
 
+    /* CHECK DESCRIPTION */
+
     if (description === "") {
 
         alert(
@@ -85,17 +98,55 @@ function submitComplaint() {
     }
 
 
-    alert(
+    /* SHOW SUCCESS MESSAGE */
 
-        "Complaint submitted successfully!\n\n" +
+    let success =
+        document.getElementById("successMessage");
 
-        "Category: " +
+
+    success.style.display = "block";
+
+
+    success.innerHTML =
+        "<strong>Complaint submitted successfully!</strong><br><br>" +
+
+        "<strong>Category:</strong> " +
         selectedCategory +
 
-        "\nLocation: " +
-        location
+        "<br>" +
 
-    );
+        "<strong>Location:</strong> " +
+        location +
+
+        "<br>" +
+
+        "<strong>Description:</strong> " +
+        description;
+
+
+    /* CLEAR FORM */
+
+    document
+        .getElementById("location")
+        .value = "";
+
+
+    document
+        .getElementById("description")
+        .value = "";
+
+
+    /* REMOVE SELECTED CATEGORY */
+
+    document
+        .querySelectorAll(".category")
+        .forEach(function (item) {
+
+            item.classList.remove("selected");
+
+        });
+
+
+    selectedCategory = "";
 
 }
-
