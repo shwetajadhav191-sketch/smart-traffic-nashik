@@ -4,294 +4,310 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Report Traffic Problem - Smart Traffic Nashik</title>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7ff;
-            color: #292e46;
-        }
-
-        .header {
-            background: white;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        .header h1 {
-            color: #7054e6;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 35px auto;
-        }
-
-        .complaint-box {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .complaint-box h2 {
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            color: #777;
-            margin-bottom: 25px;
-        }
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .category {
-            padding: 20px 10px;
-            border: 2px solid #eee;
-            border-radius: 15px;
-            background: white;
-            cursor: pointer;
-            text-align: center;
-            transition: 0.2s;
-        }
-
-        .category i {
-            display: block;
-            font-size: 28px;
-            color: #7054e6;
-            margin-bottom: 10px;
-        }
-
-        .category:hover {
-            border-color: #7054e6;
-            background: #f5f2ff;
-        }
-
-        .category.selected {
-            border-color: #7054e6;
-            background: #eeeaff;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        textarea,
-        input {
-            width: 100%;
-            padding: 13px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 15px;
-            font-family: Arial, sans-serif;
-        }
-
-        textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 30px;
-            background: #7054e6;
-            color: white;
-            font-size: 17px;
-            cursor: pointer;
-        }
-
-        .submit-btn:hover {
-            background: #5d43d2;
-        }
-
-        @media (max-width: 650px) {
-
-            .categories {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-        }
-
-    </style>
 
 </head>
 
 
 <body>
 
+
+    <!-- =========================
+     HEADER
+========================= -->
+
     <header class="header">
 
         <h1>
-            <i class="fa-solid fa-file-circle-exclamation"></i>
+
+            <img class="header-icon" src="https://img.icons8.com/3d-fluency/94/complaint.png" alt="Report">
+
             Report a Traffic Problem
+
         </h1>
 
     </header>
 
 
+    <!-- =========================
+     MAIN
+========================= -->
+
     <main class="container">
 
         <div class="complaint-box">
 
-            <h2>What's the problem?</h2>
+
+            <h2>
+                What's the problem?
+            </h2>
+
 
             <p class="subtitle">
                 Select a category and describe the issue.
             </p>
 
 
+            <!-- =========================
+             CATEGORY ICONS
+        ========================= -->
+
             <div class="categories">
 
+
+                <!-- TRAFFIC JAM -->
+
                 <button class="category" onclick="selectCategory(this, 'Traffic Jam')">
-                    <i class="fa-solid fa-car"></i>
-                    Traffic Jam
+
+                    <div class="icon-circle blue">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/car.png" alt="Traffic Jam">
+
+                    </div>
+
+                    <span>
+                        Traffic Jam
+                    </span>
+
                 </button>
+
+
+                <!-- ACCIDENT -->
 
                 <button class="category" onclick="selectCategory(this, 'Accident')">
-                    <i class="fa-solid fa-car-burst"></i>
-                    Accident
+
+                    <div class="icon-circle pink">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/car-crash.png" alt="Accident">
+
+                    </div>
+
+                    <span>
+                        Accident
+                    </span>
+
                 </button>
+
+
+                <!-- ROAD BLOCK -->
 
                 <button class="category" onclick="selectCategory(this, 'Road Block')">
-                    <i class="fa-solid fa-road-barrier"></i>
-                    Road Block
+
+                    <div class="icon-circle yellow">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/traffic-barricade.png" alt="Road Block">
+
+                    </div>
+
+                    <span>
+                        Road Block
+                    </span>
+
                 </button>
+
+
+                <!-- SIGNAL -->
 
                 <button class="category" onclick="selectCategory(this, 'Signal Problem')">
-                    <i class="fa-solid fa-traffic-light"></i>
-                    Signal Problem
+
+                    <div class="icon-circle pink">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/traffic-light.png" alt="Signal Problem">
+
+                    </div>
+
+                    <span>
+                        Signal Problem
+                    </span>
+
                 </button>
+
+
+                <!-- DAMAGED ROAD -->
 
                 <button class="category" onclick="selectCategory(this, 'Damaged Road')">
-                    <i class="fa-solid fa-road"></i>
-                    Damaged Road
+
+                    <div class="icon-circle peach">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/road.png" alt="Damaged Road">
+
+                    </div>
+
+                    <span>
+                        Damaged Road
+                    </span>
+
                 </button>
 
+
+                <!-- ILLEGAL PARKING -->
+
                 <button class="category" onclick="selectCategory(this, 'Illegal Parking')">
-                    <i class="fa-solid fa-square-parking"></i>
-                    Illegal Parking
+
+                    <div class="icon-circle lavender">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/parking.png" alt="Illegal Parking">
+
+                    </div>
+
+                    <span>
+                        Illegal Parking
+                    </span>
+
                 </button>
+
+
+                <!-- POTHOLE -->
+
+                <button class="category" onclick="selectCategory(this, 'Pothole')">
+
+                    <div class="icon-circle blue">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/road-closure.png" alt="Pothole">
+
+                    </div>
+
+                    <span>
+                        Pothole
+                    </span>
+
+                </button>
+
+
+                <!-- WRONG SIDE -->
+
+                <button class="category" onclick="selectCategory(this, 'Wrong Side Driving')">
+
+                    <div class="icon-circle cyan">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/no-entry.png" alt="Wrong Side Driving">
+
+                    </div>
+
+                    <span>
+                        Wrong Side Driving
+                    </span>
+
+                </button>
+
+
+                <!-- STREET LIGHT -->
+
+                <button class="category" onclick="selectCategory(this, 'Street Light')">
+
+                    <div class="icon-circle yellow">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/street-lamp.png" alt="Street Light">
+
+                    </div>
+
+                    <span>
+                        Street Light
+                    </span>
+
+                </button>
+
+
+                <!-- WATERLOGGING -->
+
+                <button class="category" onclick="selectCategory(this, 'Waterlogging')">
+
+                    <div class="icon-circle blue">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/water.png" alt="Waterlogging">
+
+                    </div>
+
+                    <span>
+                        Waterlogging
+                    </span>
+
+                </button>
+
+
+                <!-- SIGN BOARD -->
+
+                <button class="category" onclick="selectCategory(this, 'Missing Sign Board')">
+
+                    <div class="icon-circle peach">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/signpost.png" alt="Missing Sign Board">
+
+                    </div>
+
+                    <span>
+                        Missing Sign Board
+                    </span>
+
+                </button>
+
+
+                <!-- TRAFFIC VIOLATION -->
+
+                <button class="category" onclick="selectCategory(this, 'Traffic Rule Violation')">
+
+                    <div class="icon-circle pink">
+
+                        <img src="https://img.icons8.com/3d-fluency/94/error.png" alt="Traffic Rule Violation">
+
+                    </div>
+
+                    <span>
+                        Traffic Rule Violation
+                    </span>
+
+                </button>
+
 
             </div>
 
+
+            <!-- SELECTED CATEGORY -->
+
+            <div id="selectedCategory" class="selected-category">
+
+            </div>
+
+
+            <!-- LOCATION -->
 
             <label for="location">
                 Location
             </label>
 
-            <input
-                type="text"
-                id="location"
-                placeholder="Example: Dwarka, Nashik"
-            >
 
+            <input type="text" id="location" placeholder="Example: Dwarka, Nashik">
+
+
+            <!-- DESCRIPTION -->
 
             <label for="description">
                 Describe the problem
             </label>
 
-            <textarea
-                id="description"
-                placeholder="Describe the traffic problem..."
-            ></textarea>
 
+            <textarea id="description" placeholder="Describe the traffic problem..."></textarea>
+
+
+            <!-- SUBMIT -->
 
             <button class="submit-btn" onclick="submitComplaint()">
 
-                <i class="fa-solid fa-paper-plane"></i>
-
-                Submit Complaint
+                ➤ &nbsp; Submit Complaint
 
             </button>
+
 
         </div>
 
     </main>
 
 
-    <script>
 
-        let selectedCategory = "";
-
-        function selectCategory(button, category) {
-
-            document.querySelectorAll(".category").forEach(function(item) {
-                item.classList.remove("selected");
-            });
-
-            button.classList.add("selected");
-
-            selectedCategory = category;
-        }
-
-
-        function submitComplaint() {
-
-            let location =
-                document.getElementById("location").value;
-
-            let description =
-                document.getElementById("description").value;
-
-
-            if (selectedCategory === "") {
-
-                alert("Please select a problem category.");
-
-                return;
-            }
-
-
-            if (location === "") {
-
-                alert("Please enter the location.");
-
-                return;
-            }
-
-
-            if (description === "") {
-
-                alert("Please describe the problem.");
-
-                return;
-            }
-
-
-            alert(
-                "Complaint submitted successfully!\n\n" +
-                "Category: " + selectedCategory +
-                "\nLocation: " + location
-            );
-
-        }
-
-    </script>
 
 </body>
 
