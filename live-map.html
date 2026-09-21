@@ -7,30 +7,251 @@
 
     <title>Live Traffic Map - Smart Traffic Nashik</title>
 
-    <style>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #eef4ff;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-        h1 {
-            text-align: center;
-            padding: 30px;
-            color: #7054e6;
-        }
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/03f14a2ba9.js"></script>
 
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/live-map.css">
 </head>
 
 <body>
 
-    <h1>Live Traffic Map</h1>
+    <!-- ================= NAVBAR ================= -->
 
-    <p style="text-align:center;">
-        Your Nashik live traffic map will appear here.
-    </p>
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                🚦
+            </div>
+
+            <div>
+                Smart Traffic <span>Nashik</span>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+
+            <a href="index.html" class="nav-item">
+                <div class="nav-icon">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <div>Home</div>
+            </a>
+
+            <a href="live-map.html" class="nav-item active">
+                <div class="nav-icon">
+                    <i class="fa-regular fa-map"></i>
+                </div>
+                <div>Live Map</div>
+            </a>
+
+            <a href="emergency.html" class="nav-item">
+                <div class="nav-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>Emergency</div>
+            </a>
+
+            <a href="alerts.html" class="nav-item">
+                <div class="nav-icon">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <div>Alerts</div>
+            </a>
+
+            <a href="about.html" class="nav-item">
+                <div class="nav-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <div>About</div>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= LIVE MAP PAGE ================= -->
+
+    <main class="live-map-page">
+
+        <div class="page-heading">
+            <h1>Live Traffic Map</h1>
+
+            <p>
+                Monitor traffic conditions across Nashik
+            </p>
+        </div>
+
+
+        <!-- ================= MAP SECTION ================= -->
+
+        <section class="map-section">
+
+            <!-- Traffic Information -->
+
+            <div class="traffic-panel">
+
+                <h2>
+                    <i class="fa-solid fa-traffic-light"></i>
+                    Traffic Status
+                </h2>
+
+                <div class="legend">
+
+                    <div class="legend-item">
+                        <span class="traffic-dot clear"></span>
+                        <span>Clear Traffic</span>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="traffic-dot moderate"></span>
+                        <span>Moderate Traffic</span>
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="traffic-dot heavy"></span>
+                        <span>Heavy Traffic</span>
+                    </div>
+
+                </div>
+
+                <div class="update-box">
+                    <i class="fa-solid fa-clock"></i>
+                    Last updated: <span id="lastUpdated">Just now</span>
+                </div>
+
+            </div>
+
+
+            <!-- Map -->
+
+            <div class="map-container">
+
+                <div class="map-title">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Nashik Traffic Map
+                </div>
+
+                <!-- Temporary map design -->
+
+                <div class="map-area">
+
+                    <div class="road road-1"></div>
+                    <div class="road road-2"></div>
+                    <div class="road road-3"></div>
+                    <div class="road road-4"></div>
+
+                    <div class="location location-1">
+                        <span class="marker heavy"></span>
+                        <p>Dwarka</p>
+                    </div>
+
+                    <div class="location location-2">
+                        <span class="marker moderate"></span>
+                        <p>Jatra Hotel</p>
+                    </div>
+
+                    <div class="location location-3">
+                        <span class="marker clear"></span>
+                        <p>Amrutdham</p>
+                    </div>
+
+                    <div class="location location-4">
+                        <span class="marker clear"></span>
+                        <p>Bali Mandir</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TRAFFIC AREAS ================= -->
+
+        <section class="areas-section">
+
+            <h2>
+                <i class="fa-solid fa-road"></i>
+                Traffic Areas
+            </h2>
+
+            <div class="area-cards">
+
+                <div class="area-card heavy-card">
+                    <h3>Dwarka</h3>
+                    <p>
+                        <span class="status-dot heavy"></span>
+                        Heavy Traffic
+                    </p>
+                </div>
+
+                <div class="area-card moderate-card">
+                    <h3>Jatra Hotel</h3>
+                    <p>
+                        <span class="status-dot moderate"></span>
+                        Moderate Traffic
+                    </p>
+                </div>
+
+                <div class="area-card clear-card">
+                    <h3>Amrutdham</h3>
+                    <p>
+                        <span class="status-dot clear"></span>
+                        Clear Traffic
+                    </p>
+                </div>
+
+                <div class="area-card clear-card">
+                    <h3>Bali Mandir</h3>
+                    <p>
+                        <span class="status-dot clear"></span>
+                        Clear Traffic
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ROUTE CONNECTION ================= -->
+
+        <section class="route-section">
+
+            <div>
+                <h2>Need a route?</h2>
+
+                <p>
+                    Find a suitable route based on your destination.
+                </p>
+            </div>
+
+            <a href="route.html" class="route-button">
+                <i class="fa-solid fa-route"></i>
+                Find Best Route
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/script.js"></script>
+    <script src="js/live-map.js"></script>
 
 </body>
 

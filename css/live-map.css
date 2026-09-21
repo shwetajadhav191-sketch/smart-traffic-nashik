@@ -1,0 +1,715 @@
+/* ================= LIVE MAP PAGE ================= */
+
+.live-map-page {
+    min-height: calc(100vh - 90px);
+    background: #eef4ff;
+    padding: 45px 6%;
+}
+
+
+/* ================= PAGE HEADING ================= */
+
+.page-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.page-heading h1 {
+    margin: 0;
+    color: #7054e6;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.page-heading p {
+    margin-top: 10px;
+    color: #69728f;
+    font-size: 18px;
+}
+
+
+/* ================= MAP SECTION ================= */
+
+.map-section {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* ================= TRAFFIC PANEL ================= */
+
+.traffic-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(80, 70, 150, 0.08);
+    height: fit-content;
+}
+
+.traffic-panel h2 {
+    margin-top: 0;
+    color: #29304b;
+    font-size: 21px;
+}
+
+.traffic-panel h2 i {
+    color: #7054e6;
+    margin-right: 8px;
+}
+
+
+/* ================= LEGEND ================= */
+
+.legend {
+    margin-top: 25px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0;
+    color: #4a506c;
+    font-size: 15px;
+}
+
+.traffic-dot,
+.status-dot,
+.marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.clear {
+    background: #2dbb67;
+}
+
+.moderate {
+    background: #f2c94c;
+}
+
+.heavy {
+    background: #e74c3c;
+}
+
+
+/* ================= UPDATE ================= */
+
+.update-box {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7ef;
+    color: #69728f;
+    font-size: 13px;
+}
+
+.update-box i {
+    color: #7054e6;
+    margin-right: 5px;
+}
+
+
+/* ================= MAP ================= */
+
+.map-container {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(80, 70, 150, 0.08);
+}
+
+.map-title {
+    color: #29304b;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.map-title i {
+    color: #7054e6;
+}
+
+
+/* ================= MAP AREA ================= */
+
+.map-area {
+    position: relative;
+    height: 430px;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #dfe9d7;
+}
+
+
+/* Roads */
+
+.road {
+    position: absolute;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px #c9cfc5;
+}
+
+.road-1 {
+    width: 110%;
+    height: 25px;
+    top: 45%;
+    left: -5%;
+    transform: rotate(-12deg);
+}
+
+.road-2 {
+    width: 25px;
+    height: 120%;
+    left: 48%;
+    top: -10%;
+    transform: rotate(20deg);
+}
+
+.road-3 {
+    width: 100%;
+    height: 20px;
+    top: 70%;
+    left: 0;
+    transform: rotate(8deg);
+}
+
+.road-4 {
+    width: 100%;
+    height: 18px;
+    top: 20%;
+    left: 5%;
+    transform: rotate(25deg);
+}
+
+
+/* ================= LOCATIONS ================= */
+
+.location {
+    position: absolute;
+    text-align: center;
+    font-weight: 600;
+    color: #29304b;
+}
+
+.location p {
+    margin: 5px 0;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.marker {
+    width: 20px;
+    height: 20px;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Position of locations */
+
+.location-1 {
+    top: 38%;
+    left: 15%;
+}
+
+.location-2 {
+    top: 55%;
+    left: 55%;
+}
+
+.location-3 {
+    top: 18%;
+    left: 70%;
+}
+
+.location-4 {
+    top: 72%;
+    left: 30%;
+}
+
+
+/* ================= AREAS ================= */
+
+.areas-section {
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+.areas-section h2 {
+    color: #29304b;
+    font-size: 24px;
+}
+
+.area-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.area-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(80, 70, 150, 0.07);
+}
+
+.area-card h3 {
+    margin: 0 0 12px;
+    color: #29304b;
+}
+
+.area-card p {
+    margin: 0;
+    color: #69728f;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+}
+
+
+/* ================= ROUTE SECTION ================= */
+
+.route-section {
+    max-width: 1150px;
+    margin: 35px auto 0;
+    padding: 25px 30px;
+    background: white;
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0 6px 20px rgba(80, 70, 150, 0.07);
+}
+
+.route-section h2 {
+    margin: 0 0 5px;
+    color: #29304b;
+}
+
+.route-section p {
+    margin: 0;
+    color: #69728f;
+}
+
+.route-button {
+    text-decoration: none;
+    background: #7054e6;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.route-button:hover {
+    transform: translateY(-2px);
+    background: #6045d2;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .map-section {
+        grid-template-columns: 1fr;
+    }
+
+    .area-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .live-map-page {
+        padding: 30px 20px;
+    }
+
+    .page-heading h1 {
+        font-size: 32px;
+    }
+
+    .area-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .route-section {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+}/* ================= LIVE MAP PAGE ================= */
+
+.live-map-page {
+    min-height: calc(100vh - 90px);
+    background: #eef4ff;
+    padding: 45px 6%;
+}
+
+
+/* ================= PAGE HEADING ================= */
+
+.page-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.page-heading h1 {
+    margin: 0;
+    color: #7054e6;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.page-heading p {
+    margin-top: 10px;
+    color: #69728f;
+    font-size: 18px;
+}
+
+
+/* ================= MAP SECTION ================= */
+
+.map-section {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* ================= TRAFFIC PANEL ================= */
+
+.traffic-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(80, 70, 150, 0.08);
+    height: fit-content;
+}
+
+.traffic-panel h2 {
+    margin-top: 0;
+    color: #29304b;
+    font-size: 21px;
+}
+
+.traffic-panel h2 i {
+    color: #7054e6;
+    margin-right: 8px;
+}
+
+
+/* ================= LEGEND ================= */
+
+.legend {
+    margin-top: 25px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0;
+    color: #4a506c;
+    font-size: 15px;
+}
+
+.traffic-dot,
+.status-dot,
+.marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.clear {
+    background: #2dbb67;
+}
+
+.moderate {
+    background: #f2c94c;
+}
+
+.heavy {
+    background: #e74c3c;
+}
+
+
+/* ================= UPDATE ================= */
+
+.update-box {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7ef;
+    color: #69728f;
+    font-size: 13px;
+}
+
+.update-box i {
+    color: #7054e6;
+    margin-right: 5px;
+}
+
+
+/* ================= MAP ================= */
+
+.map-container {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(80, 70, 150, 0.08);
+}
+
+.map-title {
+    color: #29304b;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.map-title i {
+    color: #7054e6;
+}
+
+
+/* ================= MAP AREA ================= */
+
+.map-area {
+    position: relative;
+    height: 430px;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #dfe9d7;
+}
+
+
+/* Roads */
+
+.road {
+    position: absolute;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px #c9cfc5;
+}
+
+.road-1 {
+    width: 110%;
+    height: 25px;
+    top: 45%;
+    left: -5%;
+    transform: rotate(-12deg);
+}
+
+.road-2 {
+    width: 25px;
+    height: 120%;
+    left: 48%;
+    top: -10%;
+    transform: rotate(20deg);
+}
+
+.road-3 {
+    width: 100%;
+    height: 20px;
+    top: 70%;
+    left: 0;
+    transform: rotate(8deg);
+}
+
+.road-4 {
+    width: 100%;
+    height: 18px;
+    top: 20%;
+    left: 5%;
+    transform: rotate(25deg);
+}
+
+
+/* ================= LOCATIONS ================= */
+
+.location {
+    position: absolute;
+    text-align: center;
+    font-weight: 600;
+    color: #29304b;
+}
+
+.location p {
+    margin: 5px 0;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.marker {
+    width: 20px;
+    height: 20px;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Position of locations */
+
+.location-1 {
+    top: 38%;
+    left: 15%;
+}
+
+.location-2 {
+    top: 55%;
+    left: 55%;
+}
+
+.location-3 {
+    top: 18%;
+    left: 70%;
+}
+
+.location-4 {
+    top: 72%;
+    left: 30%;
+}
+
+
+/* ================= AREAS ================= */
+
+.areas-section {
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+.areas-section h2 {
+    color: #29304b;
+    font-size: 24px;
+}
+
+.area-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.area-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(80, 70, 150, 0.07);
+}
+
+.area-card h3 {
+    margin: 0 0 12px;
+    color: #29304b;
+}
+
+.area-card p {
+    margin: 0;
+    color: #69728f;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+}
+
+
+/* ================= ROUTE SECTION ================= */
+
+.route-section {
+    max-width: 1150px;
+    margin: 35px auto 0;
+    padding: 25px 30px;
+    background: white;
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0 6px 20px rgba(80, 70, 150, 0.07);
+}
+
+.route-section h2 {
+    margin: 0 0 5px;
+    color: #29304b;
+}
+
+.route-section p {
+    margin: 0;
+    color: #69728f;
+}
+
+.route-button {
+    text-decoration: none;
+    background: #7054e6;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.route-button:hover {
+    transform: translateY(-2px);
+    background: #6045d2;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .map-section {
+        grid-template-columns: 1fr;
+    }
+
+    .area-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .live-map-page {
+        padding: 30px 20px;
+    }
+
+    .page-heading h1 {
+        font-size: 32px;
+    }
+
+    .area-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .route-section {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+}
