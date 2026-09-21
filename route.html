@@ -6,61 +6,314 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Route Suggestion - Smart Traffic Nashik</title>
+    <title>Route - Smart Traffic Nashik</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link rel="stylesheet" href="css\route.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-
+    <!-- Route CSS -->
+    <link rel="stylesheet" href="css/route.css">
 
 </head>
 
+
 <body>
+
+    <!-- Header -->
 
     <header class="header">
 
-        <h1>
+        <div class="logo">
             <i class="fa-solid fa-route"></i>
-            Find Your Best Route
-        </h1>
+            <span>Smart Traffic <b>Nashik</b></span>
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+
+            <a href="live-map.html">
+                <i class="fa-solid fa-map"></i>
+                Live Map
+            </a>
+
+            <a href="route.html" class="active">
+                <i class="fa-solid fa-route"></i>
+                Route
+            </a>
+
+            <a href="emergency.html">
+                <i class="fa-solid fa-phone"></i>
+                Emergency
+            </a>
+
+            <a href="alerts.html">
+                <i class="fa-solid fa-bell"></i>
+                Alerts
+            </a>
+
+            <a href="about.html">
+                <i class="fa-solid fa-circle-info"></i>
+                About
+            </a>
+
+        </nav>
 
     </header>
 
 
+    <!-- Main Content -->
+
     <main class="container">
 
-        <!-- ROUTE SEARCH -->
 
-        <div class="card">
+        <!-- Page Heading -->
 
-            <h2>Route Suggestion</h2>
+        <section class="page-heading">
 
-            <label for="from">
-                Starting Location
-            </label>
+            <h1>
+                Find Your Best Route
+            </h1>
 
-            <input type="text" id="from" placeholder="Enter starting location">
+            <p>
+                Smarter traffic. Shorter travel. A better Nashik.
+            </p>
 
-
-            <label for="destination">
-                Destination
-            </label>
-
-            <input type="text" id="destination" placeholder="Enter destination">
+        </section>
 
 
-            <button class="route-btn" onclick="findRoute()">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                Find Best Route
+        <!-- Route Search Card -->
+
+        <section class="card route-card">
+
+            <h2>
+                <i class="fa-solid fa-location-dot"></i>
+                Plan Your Route
+            </h2>
+
+
+            <!-- Starting Location -->
+
+            <div class="input-group">
+
+                <label for="from">
+                    Starting Location
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <input
+                        type="text"
+                        id="from"
+                        placeholder="Enter starting location"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <!-- Starting Location Suggestions -->
+
+                <div id="fromSuggestions" class="suggestions"></div>
+
+            </div>
+
+
+            <!-- Swap Button -->
+
+            <button
+                type="button"
+                id="swapBtn"
+                class="swap-btn"
+                title="Swap locations">
+
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
             </button>
 
-        </div>
+
+            <!-- Destination -->
+
+            <div class="input-group">
+
+                <label for="destination">
+                    Destination
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-flag-checkered"></i>
+
+                    <input
+                        type="text"
+                        id="destination"
+                        placeholder="Enter destination"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <!-- Destination Suggestions -->
+
+                <div id="destinationSuggestions" class="suggestions"></div>
+
+            </div>
 
 
-        <!-- COMPLAINT -->
+            <!-- Find Route Button -->
 
-        <div class="card">
+            <button
+                type="button"
+                id="findRouteBtn"
+                class="route-btn">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Find Best Route
+
+            </button>
+
+
+            <!-- Message -->
+
+            <p id="message" class="message"></p>
+
+        </section>
+
+
+        <!-- Route Result -->
+
+        <section
+            id="routeResult"
+            class="card route-result hidden">
+
+            <h2>
+                <i class="fa-solid fa-road"></i>
+                Route Information
+            </h2>
+
+
+            <div class="route-info">
+
+
+                <!-- Distance -->
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-road"></i>
+
+                    <div>
+
+                        <span>Distance</span>
+
+                        <strong id="distance">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Time -->
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <div>
+
+                        <span>Estimated Time</span>
+
+                        <strong id="travelTime">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Traffic -->
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-traffic-light"></i>
+
+                    <div>
+
+                        <span>Traffic</span>
+
+                        <strong id="traffic">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Route Path -->
+
+            <div class="route-path">
+
+                <div class="location">
+
+                    <span class="start-dot"></span>
+
+                    <p id="fromDisplay">
+                        Starting Location
+                    </p>
+
+                </div>
+
+
+                <div class="route-line"></div>
+
+
+                <div class="location">
+
+                    <span class="destination-dot"></span>
+
+                    <p id="destinationDisplay">
+                        Destination
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Map -->
+
+            <div class="map-container">
+
+                <i class="fa-solid fa-map-location-dot"></i>
+
+                <h3>
+                    Map View
+                </h3>
+
+                <p>
+                    Interactive route map will appear here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Traffic Complaint -->
+
+        <section class="card complaint-card">
 
             <h2>
                 <i class="fa-solid fa-triangle-exclamation"></i>
@@ -68,11 +321,13 @@
             </h2>
 
             <p>
-                Report an accident, traffic jam, road blockage,
+                Report an accident traffic jam road blockage
                 signal problem or other traffic issue.
             </p>
 
-            <a href="complaint.html" class="complaint-btn">
+            <a
+                href="complaint.html"
+                class="complaint-btn">
 
                 <i class="fa-solid fa-file-circle-exclamation"></i>
 
@@ -80,32 +335,26 @@
 
             </a>
 
-        </div>
+        </section>
+
 
     </main>
 
 
-    <script>
+    <!-- Footer -->
 
-        function findRoute() {
+    <footer class="footer">
 
-            let from = document.getElementById("from").value;
-            let destination = document.getElementById("destination").value;
+        <p>
+            © 2026 Smart Traffic Nashik
+        </p>
 
-            if (from === "" || destination === "") {
+    </footer>
 
-                alert("Please enter both starting location and destination.");
 
-                return;
-            }
+    <!-- JavaScript -->
 
-            alert(
-                "Route suggestion will be displayed here."
-            );
-
-        }
-
-    </script>
+    <script src="js/route.js"></script>
 
 </body>
 
