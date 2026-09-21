@@ -1,0 +1,664 @@
+/* ================================= */
+/* Smart Traffic Nashik - Emergency  */
+/* ================================= */
+
+
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Body */
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: #f4f7ff;
+
+    color: #292e46;
+}
+
+
+/* ================================= */
+/* Header */
+/* ================================= */
+
+.header {
+    background: white;
+
+    padding: 15px 5%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Logo */
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.logo-icon {
+    width: 45px;
+
+    height: 45px;
+
+    background: #7054e6;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+}
+
+
+.logo span {
+    color: #7054e6;
+}
+
+
+/* Navigation */
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.nav-item {
+    text-decoration: none;
+
+    color: #292e46;
+
+    text-align: center;
+
+    padding: 7px 10px;
+
+    border-bottom: 3px solid transparent;
+
+    transition: 0.2s;
+}
+
+
+.nav-item:hover,
+.nav-item.active {
+    color: #7054e6;
+
+    border-bottom-color: #7054e6;
+}
+
+
+.nav-icon {
+    font-size: 19px;
+
+    margin-bottom: 5px;
+
+    color: #7054e6;
+}
+
+
+.nav-item div:last-child {
+    font-size: 13px;
+}
+
+
+/* ================================= */
+/* Container */
+/* ================================= */
+
+.container {
+    width: 90%;
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding: 40px 0;
+}
+
+
+/* ================================= */
+/* Heading */
+/* ================================= */
+
+.page-heading {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+
+.heading-icon {
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 50%;
+
+    background: #f1edff;
+
+    color: #7054e6;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: auto auto 15px;
+
+    font-size: 25px;
+}
+
+
+.page-heading h1 {
+    font-size: 38px;
+
+    margin-bottom: 10px;
+}
+
+
+.page-heading p {
+    color: #666;
+
+    font-size: 16px;
+}
+
+
+/* ================================= */
+/* Main Emergency Card */
+/* ================================= */
+
+.main-emergency {
+    background: linear-gradient(
+        135deg,
+        #7054e6,
+        #8872ee
+    );
+
+    color: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    box-shadow:
+        0 8px 25px rgba(112, 84, 230, 0.25);
+
+    margin-bottom: 45px;
+}
+
+
+.emergency-icon {
+    width: 75px;
+
+    height: 75px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 32px;
+}
+
+
+.emergency-content {
+    flex: 1;
+}
+
+
+.emergency-label {
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    opacity: 0.9;
+}
+
+
+.emergency-content h2 {
+    font-size: 42px;
+
+    margin: 4px 0;
+}
+
+
+.emergency-content p {
+    opacity: 0.95;
+}
+
+
+.call-main {
+    text-decoration: none;
+
+    background: white;
+
+    color: #7054e6;
+
+    padding: 14px 22px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+.call-main:hover {
+    background: #f5f3ff;
+}
+
+
+/* ================================= */
+/* Section Heading */
+/* ================================= */
+
+.section-heading {
+    margin-bottom: 20px;
+
+    margin-top: 10px;
+}
+
+
+.section-heading h2 {
+    color: #7054e6;
+
+    margin-bottom: 7px;
+}
+
+
+.section-heading p {
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+/* ================================= */
+/* Service Grid */
+/* ================================= */
+
+.service-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 45px;
+}
+
+
+.service-card {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.07);
+
+    transition: 0.2s;
+}
+
+
+.service-card:hover {
+    transform: translateY(-3px);
+}
+
+
+.service-icon {
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 25px;
+
+    background: #f1edff;
+
+    color: #7054e6;
+}
+
+
+.service-content {
+    flex: 1;
+}
+
+
+.service-content h3 {
+    margin-bottom: 4px;
+}
+
+
+.service-content p {
+    color: #777;
+
+    font-size: 13px;
+
+    margin-bottom: 7px;
+}
+
+
+.service-content strong {
+    font-size: 25px;
+
+    color: #292e46;
+}
+
+
+.call-btn {
+    text-decoration: none;
+
+    background: #7054e6;
+
+    color: white;
+
+    padding: 10px 16px;
+
+    border-radius: 25px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+.call-btn:hover {
+    background: #5d43d2;
+}
+
+
+/* ================================= */
+/* Nashik Helplines */
+/* ================================= */
+
+.helpline-card {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 5px 25px;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.07);
+
+    margin-bottom: 35px;
+}
+
+
+.helpline-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+.helpline-row:last-child {
+    border-bottom: none;
+}
+
+
+.helpline-icon {
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 12px;
+
+    background: #f1edff;
+
+    color: #7054e6;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 19px;
+}
+
+
+.helpline-name {
+    flex: 1;
+}
+
+
+.helpline-name h3 {
+    font-size: 16px;
+
+    margin-bottom: 4px;
+}
+
+
+.helpline-name p {
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+.helpline-row > strong {
+    font-size: 20px;
+
+    min-width: 60px;
+
+    text-align: right;
+}
+
+
+.small-call {
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #7054e6;
+
+    color: white;
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.small-call:hover {
+    background: #5d43d2;
+}
+
+
+/* ================================= */
+/* Safety Note */
+/* ================================= */
+
+.safety-note {
+    background: #f1edff;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: flex-start;
+
+    margin-top: 20px;
+}
+
+
+.safety-note > i {
+    color: #7054e6;
+
+    font-size: 22px;
+}
+
+
+.safety-note h3 {
+    margin-bottom: 7px;
+}
+
+
+.safety-note p {
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* ================================= */
+/* Footer */
+/* ================================= */
+
+.footer {
+    text-align: center;
+
+    padding: 25px;
+
+    color: #666;
+}
+
+
+/* ================================= */
+/* Responsive */
+/* ================================= */
+
+@media (max-width: 850px) {
+
+    .header {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+
+    .nav-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    .main-emergency {
+        flex-wrap: wrap;
+    }
+
+
+    .call-main {
+        width: 100%;
+
+        text-align: center;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .container {
+        width: 92%;
+    }
+
+
+    .page-heading h1 {
+        font-size: 30px;
+    }
+
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .main-emergency {
+        padding: 22px;
+    }
+
+
+    .emergency-content h2 {
+        font-size: 35px;
+    }
+
+
+    .helpline-row {
+        flex-wrap: wrap;
+    }
+
+
+    .helpline-row > strong {
+        margin-left: auto;
+    }
+
+}
