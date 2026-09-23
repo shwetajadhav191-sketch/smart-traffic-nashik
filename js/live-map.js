@@ -1,6 +1,14 @@
-// ================= LIVE MAP =================
+// =====================================================
+// SMART TRAFFIC NASHIK - LIVE TRAFFIC SIGNALS
+// =====================================================
+
+
+// =====================================================
+// LAST UPDATED TIME
+// =====================================================
 
 function updateTime() {
+
     const now = new Date();
 
     const time = now.toLocaleTimeString([], {
@@ -8,105 +16,235 @@ function updateTime() {
         minute: "2-digit"
     });
 
-    document.getElementById("lastUpdated").textContent = time;
+    const lastUpdated = document.getElementById("lastUpdated");
+
+    if (lastUpdated) {
+        lastUpdated.textContent = time;
+    }
 }
 
+
+// Update immediately
 updateTime();
 
+// Update every minute
+setInterval(updateTime, 60000);
 
-// ================= LIVE TRAFFIC SIGNALS =================
 
-const signals = document.querySelectorAll(".signal");
 
-const signalData = [
+// =====================================================
+// TRAFFIC SIGNAL DATA
+// =====================================================
+
+const signals = [
+
     {
-        state: "red",
-        time: 20
+        name: "CBS Signal",
+        element: 1,
+        state: "RED",
+        countdown: 20
     },
+
     {
-        state: "green",
-        time: 30
+        name: "Canada Corner Signal",
+        element: 2,
+        state: "GREEN",
+        countdown: 30
+    },
+
+    {
+        name: "Trimbak Naka Signal",
+        element: 3,
+        state: "YELLOW",
+        countdown: 5
+    },
+
+    {
+        name: "Mumbai Naka",
+        element: 4,
+        state: "RED",
+        countdown: 20
     }
+
 ];
 
 
-function updateSignals() {
 
-    signals.forEach((signal, index) => {
+// =====================================================
+// SIGNAL TIMINGS
+// =====================================================
 
-        const data = signalData[index];
+const signalTimings = {
 
-        const red = signal.querySelector(".red");
-        const yellow = signal.querySelector(".yellow");
-        const green = signal.querySelector(".green");
+    RED: 20,
 
-        const status = signal.querySelector(".signal-status");
-        const countdown = signal.querySelector(".countdown");
+    YELLOW: 5,
 
+    GREEN: 30
 
-        // Turn all lights OFF
-        red.classList.remove("active");
-        yellow.classList.remove("active");
-        green.classList.remove("active");
+};
 
 
-        // Turn ON current light
-        if (data.state === "red") {
 
-            red.classList.add("active");
-            status.textContent = "RED";
+// =====================================================
+// UPDATE ONE SIGNAL
+// =====================================================
 
-        } else if (data.state === "yellow") {
+function updateSignal(signal) {
 
-            yellow.classList.add("active");
-            status.textContent = "YELLOW";
+    const signalBox = document.querySelector(
+        `.signal-${signal.element}`
+    );
 
-        } else {
-
-            green.classList.add("active");
-            status.textContent = "GREEN";
-        }
+    if (!signalBox) {
+        return;
+    }
 
 
-        // Update countdown
-        countdown.textContent = data.time + " sec";
-    });
+    // Find the three lights
+    const redLight =
+        signalBox.querySelector(".light.red");
+
+    const yellowLight =
+        signalBox.querySelector(".light.yellow");
+
+    const greenLight =
+        signalBox.querySelector(".light.green");
+
+
+    // Find text
+    const statusText =
+        signalBox.querySelector(".signal-status");
+
+    const countdownText =
+        signalBox.querySelector(".countdown");
+
+
+    // Remove active class from all lights
+    redLight.classList.remove("active");
+
+    yellowLight.classList.remove("active");
+
+    greenLight.classList.remove("active");
+
+
+    // =================================================
+    // TURN ON THE CORRECT LIGHT
+    // =================================================
+
+    if (signal.state === "RED") {
+
+        redLight.classList.add("active");
+
+    }
+
+    else if (signal.state === "YELLOW") {
+
+        yellowLight.classList.add("active");
+
+    }
+
+    else if (signal.state === "GREEN") {
+
+        greenLight.classList.add("active");
+
+    }
+
+
+    // =================================================
+    // UPDATE TEXT
+    // =================================================
+
+    statusText.textContent = signal.state;
+
+    countdownText.textContent = signal.countdown;
+
 }
 
 
-function signalTimer() {
 
-    signalData.forEach((data) => {
+// =====================================================
+// CHANGE TO NEXT SIGNAL STATE
+// =====================================================
 
-        data.time--;
+function nextSignalState(signal) {
 
-        if (data.time <= 0) {
 
-            if (data.state === "red") {
+    if (signal.state === "RED") {
 
-                data.state = "green";
-                data.time = 30;
+        signal.state = "GREEN";
 
-            } else if (data.state === "green") {
+        signal.countdown = signalTimings.GREEN;
 
-                data.state = "yellow";
-                data.time = 5;
+    }
 
-            } else {
 
-                data.state = "red";
-                data.time = 20;
-            }
-        }
-    });
+    else if (signal.state === "GREEN") {
 
-    updateSignals();
+        signal.state = "YELLOW";
+
+        signal.countdown = signalTimings.YELLOW;
+
+    }
+
+
+    else if (signal.state === "YELLOW") {
+
+        signal.state = "RED";
+
+        signal.countdown = signalTimings.RED;
+
+    }
+
 }
 
 
-// Start signals
-updateSignals();
+
+// =====================================================
+// COUNTDOWN
+// =====================================================
+
+function updateCountdown() {
+
+    signals.forEach(function(signal) {
 
 
-// Run every 1 second
-setInterval(signalTimer, 1000);
+        // Reduce countdown by 1 second
+        signal.countdown--;
+
+
+        // When countdown reaches zero
+        if (signal.countdown <= 0) {
+
+            // Move to next state
+            nextSignalState(signal);
+
+        }
+
+
+        // Update the signal on the webpage
+        updateSignal(signal);
+
+    });
+
+}
+
+
+
+// =====================================================
+// INITIAL DISPLAY
+// =====================================================
+
+signals.forEach(function(signal) {
+
+    updateSignal(signal);
+
+});
+
+
+
+// =====================================================
+// RUN EVERY SECOND
+// =====================================================
+
+setInterval(updateCountdown, 1000);

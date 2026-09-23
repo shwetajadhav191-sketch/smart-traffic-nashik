@@ -788,14 +788,39 @@
     font-weight: 700;
 }
 
-/* Signal positions */
+/* ================= TRAFFIC SIGNAL POSITIONS ================= */
 
+/* CBS Signal */
 .signal-1 {
-    top: 25%;
-    left: 18%;
+    top: 15%;
+    left: 20%;
 }
 
+
+/* Canada Corner Signal */
 .signal-2 {
-    top: 55%;
-    left: 63%;
+    top: 20%;
+    right: 20%;
+}
+
+
+/* Trimbak Naka Signal */
+.signal-3 {
+    bottom: 20%;
+    left: 20%;
+}
+
+
+/* Mumbai Naka Signal */
+.signal-4 {
+    bottom: 15%;
+    right: 20%;
+}
+
+/* ================= ACTIVE SIGNAL LIGHT ================= */
+
+.light.active {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 0 12px currentColor;
 }
