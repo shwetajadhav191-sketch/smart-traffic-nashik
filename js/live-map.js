@@ -1,6 +1,7 @@
 // =====================================================
-// SMART TRAFFIC NASHIK - LIVE TRAFFIC SIGNALS
+// SMART TRAFFIC NASHIK - LIVE TRAFFIC MAP
 // =====================================================
+
 
 
 // =====================================================
@@ -16,7 +17,8 @@ function updateTime() {
         minute: "2-digit"
     });
 
-    const lastUpdated = document.getElementById("lastUpdated");
+    const lastUpdated =
+        document.getElementById("lastUpdated");
 
     if (lastUpdated) {
         lastUpdated.textContent = time;
@@ -87,6 +89,208 @@ const signalTimings = {
 
 
 // =====================================================
+// CONVERT SIGNAL TO TRAFFIC STATUS
+// =====================================================
+
+function getTrafficStatus(signalState) {
+
+    if (signalState === "RED") {
+
+        return "heavy";
+
+    }
+
+    else if (signalState === "YELLOW") {
+
+        return "moderate";
+
+    }
+
+    else {
+
+        return "clear";
+
+    }
+
+}
+
+
+
+// =====================================================
+// CONVERT STATUS TO DISPLAY TEXT
+// =====================================================
+
+function getTrafficText(status) {
+
+    if (status === "heavy") {
+
+        return "Heavy Traffic";
+
+    }
+
+    else if (status === "moderate") {
+
+        return "Moderate Traffic";
+
+    }
+
+    else {
+
+        return "Clear Traffic";
+
+    }
+
+}
+
+
+
+// =====================================================
+// UPDATE MAP MARKER
+// =====================================================
+
+function updateMapMarker(signal) {
+
+    const location = document.querySelector(
+        `.location[data-signal="${signal.element}"]`
+    );
+
+    if (!location) {
+        return;
+    }
+
+
+    const marker =
+        location.querySelector(".marker");
+
+    if (!marker) {
+        return;
+    }
+
+
+    // Get traffic status
+    const status =
+        getTrafficStatus(signal.state);
+
+
+    // Remove old traffic classes
+    marker.classList.remove("heavy");
+
+    marker.classList.remove("moderate");
+
+    marker.classList.remove("clear");
+
+
+    // Add new traffic class
+    marker.classList.add(status);
+
+}
+
+
+
+// =====================================================
+// UPDATE TRAFFIC AREA CARD
+// =====================================================
+
+function updateTrafficCard(signal) {
+
+    const card = document.querySelector(
+        `[data-signal-card="${signal.element}"]`
+    );
+
+    if (!card) {
+        return;
+    }
+
+
+    // Get traffic status
+    const status =
+        getTrafficStatus(signal.state);
+
+
+    // Get display text
+    const trafficText =
+        getTrafficText(status);
+
+
+    // Find status dot
+    const statusDot =
+        card.querySelector(".status-dot");
+
+
+    // Find status text
+    const statusText =
+        card.querySelector(".traffic-status-text");
+
+
+    // Remove old card classes
+    card.classList.remove("heavy-card");
+
+    card.classList.remove("moderate-card");
+
+    card.classList.remove("clear-card");
+
+
+    // Add new card class
+    card.classList.add(
+        `${status}-card`
+    );
+
+
+    // Update dot
+    if (statusDot) {
+
+        statusDot.classList.remove("heavy");
+
+        statusDot.classList.remove("moderate");
+
+        statusDot.classList.remove("clear");
+
+        statusDot.classList.add(status);
+
+    }
+
+
+    // Update text
+    if (statusText) {
+
+        statusText.textContent =
+            trafficText;
+
+    }
+
+
+    // Small animation
+    card.classList.add("status-changed");
+
+
+    setTimeout(function() {
+
+        card.classList.remove("status-changed");
+
+    }, 300);
+
+}
+
+
+
+// =====================================================
+// UPDATE TRAFFIC INFORMATION
+// =====================================================
+
+function updateTrafficInformation(signal) {
+
+    // Update map marker
+    updateMapMarker(signal);
+
+
+    // Update traffic card
+    updateTrafficCard(signal);
+
+}
+
+
+
+// =====================================================
 // UPDATE ONE SIGNAL
 // =====================================================
 
@@ -101,7 +305,7 @@ function updateSignal(signal) {
     }
 
 
-    // Find the three lights
+    // Find lights
     const redLight =
         signalBox.querySelector(".light.red");
 
@@ -120,7 +324,7 @@ function updateSignal(signal) {
         signalBox.querySelector(".countdown");
 
 
-    // Remove active class from all lights
+    // Remove active class
     redLight.classList.remove("active");
 
     yellowLight.classList.remove("active");
@@ -129,7 +333,7 @@ function updateSignal(signal) {
 
 
     // =================================================
-    // TURN ON THE CORRECT LIGHT
+    // TURN ON CORRECT LIGHT
     // =================================================
 
     if (signal.state === "RED") {
@@ -152,12 +356,21 @@ function updateSignal(signal) {
 
 
     // =================================================
-    // UPDATE TEXT
+    // UPDATE SIGNAL TEXT
     // =================================================
 
-    statusText.textContent = signal.state;
+    statusText.textContent =
+        signal.state;
 
-    countdownText.textContent = signal.countdown;
+    countdownText.textContent =
+        signal.countdown;
+
+
+    // =================================================
+    // UPDATE TRAFFIC INFORMATION
+    // =================================================
+
+    updateTrafficInformation(signal);
 
 }
 
@@ -174,7 +387,8 @@ function nextSignalState(signal) {
 
         signal.state = "GREEN";
 
-        signal.countdown = signalTimings.GREEN;
+        signal.countdown =
+            signalTimings.GREEN;
 
     }
 
@@ -183,7 +397,8 @@ function nextSignalState(signal) {
 
         signal.state = "YELLOW";
 
-        signal.countdown = signalTimings.YELLOW;
+        signal.countdown =
+            signalTimings.YELLOW;
 
     }
 
@@ -192,7 +407,8 @@ function nextSignalState(signal) {
 
         signal.state = "RED";
 
-        signal.countdown = signalTimings.RED;
+        signal.countdown =
+            signalTimings.RED;
 
     }
 
@@ -208,21 +424,20 @@ function updateCountdown() {
 
     signals.forEach(function(signal) {
 
-
-        // Reduce countdown by 1 second
+        // Reduce countdown
         signal.countdown--;
 
 
-        // When countdown reaches zero
+        // If countdown reaches zero
         if (signal.countdown <= 0) {
 
-            // Move to next state
+            // Change signal
             nextSignalState(signal);
 
         }
 
 
-        // Update the signal on the webpage
+        // Update webpage
         updateSignal(signal);
 
     });

@@ -824,3 +824,38 @@
     transform: scale(1.15);
     box-shadow: 0 0 12px currentColor;
 }
+
+/* =====================================================
+   CONNECTED TRAFFIC STATUS
+   ===================================================== */
+
+
+/* Smooth status changes */
+.location .marker,
+.area-card {
+    transition: all 0.3s ease;
+}
+
+
+/* Active heavy traffic */
+.area-card.heavy-card {
+    border-left: 4px solid #e53935;
+}
+
+
+/* Active moderate traffic */
+.area-card.moderate-card {
+    border-left: 4px solid #f9a825;
+}
+
+
+/* Active clear traffic */
+.area-card.clear-card {
+    border-left: 4px solid #43a047;
+}
+
+
+/* Small animation when traffic status changes */
+.area-card.status-changed {
+    transform: scale(1.02);
+}

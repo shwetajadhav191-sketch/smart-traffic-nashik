@@ -222,23 +222,24 @@
                     <div class="road road-2"></div>
                     <div class="road road-3"></div>
                     <div class="road road-4"></div>
+                    <!-- ================= MAP LOCATIONS ================= -->
 
-                    <div class="location location-1">
+                    <div class="location location-1" data-signal="1">
                         <span class="marker heavy"></span>
                         <p>CBS Signal</p>
                     </div>
 
-                    <div class="location location-2">
+                    <div class="location location-2" data-signal="2">
                         <span class="marker moderate"></span>
                         <p>Canada Corner Signal</p>
                     </div>
 
-                    <div class="location location-3">
+                    <div class="location location-3" data-signal="3">
                         <span class="marker clear"></span>
                         <p>Trimbak Naka Signal</p>
                     </div>
 
-                    <div class="location location-4">
+                    <div class="location location-4" data-signal="4">
                         <span class="marker moderate"></span>
                         <p>Mumbai Naka</p>
                     </div>
@@ -260,36 +261,55 @@
 
             <div class="area-cards">
 
-                <div class="area-card heavy-card">
+                <!-- CBS Signal -->
+                <div class="area-card heavy-card" data-signal-card="1">
+
                     <h3>CBS Signal</h3>
+
                     <p>
                         <span class="status-dot heavy"></span>
-                        Heavy Traffic
+                        <span class="traffic-status-text">Heavy Traffic</span>
                     </p>
+
                 </div>
 
-                <div class="area-card moderate-card">
+
+                <!-- Canada Corner Signal -->
+                <div class="area-card moderate-card" data-signal-card="2">
+
                     <h3>Canada Corner Signal</h3>
+
                     <p>
                         <span class="status-dot moderate"></span>
-                        Moderate Traffic
+                        <span class="traffic-status-text">Moderate Traffic</span>
                     </p>
+
                 </div>
 
-                <div class="area-card clear-card">
+
+                <!-- Trimbak Naka Signal -->
+                <div class="area-card clear-card" data-signal-card="3">
+
                     <h3>Trimbak Naka Signal</h3>
+
                     <p>
                         <span class="status-dot clear"></span>
-                        Clear Traffic
+                        <span class="traffic-status-text">Clear Traffic</span>
                     </p>
+
                 </div>
 
-                <div class="area-card moderate-card">
+
+                <!-- Mumbai Naka -->
+                <div class="area-card moderate-card" data-signal-card="4">
+
                     <h3>Mumbai Naka</h3>
+
                     <p>
                         <span class="status-dot moderate"></span>
-                        Moderate Traffic
+                        <span class="traffic-status-text">Moderate Traffic</span>
                     </p>
+
                 </div>
 
             </div>
