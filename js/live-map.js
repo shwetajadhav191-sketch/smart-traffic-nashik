@@ -3,6 +3,28 @@
 // =====================================================
 
 
+// =====================================================
+// SIGNAL INFORMATION PANEL ELEMENTS
+// =====================================================
+
+const signalInfoPanel =
+    document.getElementById("signalInfoPanel");
+
+const selectedSignalName =
+    document.getElementById("selectedSignalName");
+
+const selectedSignalStatus =
+    document.getElementById("selectedSignalStatus");
+
+const selectedSignalCountdown =
+    document.getElementById("selectedSignalCountdown");
+
+const selectedTrafficStatus =
+    document.getElementById("selectedTrafficStatus");
+
+const closeSignalPanel =
+    document.getElementById("closeSignalPanel");
+
 
 // =====================================================
 // LAST UPDATED TIME
@@ -25,13 +47,9 @@ function updateTime() {
     }
 }
 
-
-// Update immediately
 updateTime();
 
-// Update every minute
 setInterval(updateTime, 60000);
-
 
 
 // =====================================================
@@ -71,7 +89,6 @@ const signals = [
 ];
 
 
-
 // =====================================================
 // SIGNAL TIMINGS
 // =====================================================
@@ -87,7 +104,6 @@ const signalTimings = {
 };
 
 
-
 // =====================================================
 // CONVERT SIGNAL TO TRAFFIC STATUS
 // =====================================================
@@ -95,25 +111,17 @@ const signalTimings = {
 function getTrafficStatus(signalState) {
 
     if (signalState === "RED") {
-
         return "heavy";
-
     }
 
     else if (signalState === "YELLOW") {
-
         return "moderate";
-
     }
 
     else {
-
         return "clear";
-
     }
-
 }
-
 
 
 // =====================================================
@@ -123,25 +131,17 @@ function getTrafficStatus(signalState) {
 function getTrafficText(status) {
 
     if (status === "heavy") {
-
         return "Heavy Traffic";
-
     }
 
     else if (status === "moderate") {
-
         return "Moderate Traffic";
-
     }
 
     else {
-
         return "Clear Traffic";
-
     }
-
 }
-
 
 
 // =====================================================
@@ -158,7 +158,6 @@ function updateMapMarker(signal) {
         return;
     }
 
-
     const marker =
         location.querySelector(".marker");
 
@@ -166,25 +165,17 @@ function updateMapMarker(signal) {
         return;
     }
 
-
-    // Get traffic status
     const status =
         getTrafficStatus(signal.state);
 
+    marker.classList.remove(
+        "heavy",
+        "moderate",
+        "clear"
+    );
 
-    // Remove old traffic classes
-    marker.classList.remove("heavy");
-
-    marker.classList.remove("moderate");
-
-    marker.classList.remove("clear");
-
-
-    // Add new traffic class
     marker.classList.add(status);
-
 }
-
 
 
 // =====================================================
@@ -201,76 +192,52 @@ function updateTrafficCard(signal) {
         return;
     }
 
-
-    // Get traffic status
     const status =
         getTrafficStatus(signal.state);
 
-
-    // Get display text
     const trafficText =
         getTrafficText(status);
 
-
-    // Find status dot
     const statusDot =
         card.querySelector(".status-dot");
 
-
-    // Find status text
     const statusText =
         card.querySelector(".traffic-status-text");
 
+    card.classList.remove(
+        "heavy-card",
+        "moderate-card",
+        "clear-card"
+    );
 
-    // Remove old card classes
-    card.classList.remove("heavy-card");
-
-    card.classList.remove("moderate-card");
-
-    card.classList.remove("clear-card");
-
-
-    // Add new card class
     card.classList.add(
         `${status}-card`
     );
 
-
-    // Update dot
     if (statusDot) {
 
-        statusDot.classList.remove("heavy");
-
-        statusDot.classList.remove("moderate");
-
-        statusDot.classList.remove("clear");
+        statusDot.classList.remove(
+            "heavy",
+            "moderate",
+            "clear"
+        );
 
         statusDot.classList.add(status);
-
     }
 
-
-    // Update text
     if (statusText) {
-
         statusText.textContent =
             trafficText;
-
     }
 
-
-    // Small animation
     card.classList.add("status-changed");
-
 
     setTimeout(function() {
 
         card.classList.remove("status-changed");
 
     }, 300);
-
 }
-
 
 
 // =====================================================
@@ -279,15 +246,51 @@ function updateTrafficCard(signal) {
 
 function updateTrafficInformation(signal) {
 
-    // Update map marker
     updateMapMarker(signal);
 
-
-    // Update traffic card
     updateTrafficCard(signal);
-
 }
 
+
+// =====================================================
+// UPDATE SIGNAL INFORMATION PANEL
+// =====================================================
+
+function updateInformationPanel(signal) {
+
+    if (!signalInfoPanel) {
+        return;
+    }
+
+    // Only update the panel if it is currently open
+    if (!signalInfoPanel.classList.contains("show")) {
+        return;
+    }
+
+    if (selectedSignalName) {
+        selectedSignalName.textContent =
+            signal.name;
+    }
+
+    if (selectedSignalStatus) {
+        selectedSignalStatus.textContent =
+            signal.state;
+    }
+
+    if (selectedSignalCountdown) {
+        selectedSignalCountdown.textContent =
+            signal.countdown;
+    }
+
+    if (selectedTrafficStatus) {
+
+        const trafficStatus =
+            getTrafficStatus(signal.state);
+
+        selectedTrafficStatus.textContent =
+            getTrafficText(trafficStatus);
+    }
+}
 
 
 // =====================================================
@@ -304,8 +307,6 @@ function updateSignal(signal) {
         return;
     }
 
-
-    // Find lights
     const redLight =
         signalBox.querySelector(".light.red");
 
@@ -315,8 +316,6 @@ function updateSignal(signal) {
     const greenLight =
         signalBox.querySelector(".light.green");
 
-
-    // Find text
     const statusText =
         signalBox.querySelector(".signal-status");
 
@@ -324,7 +323,8 @@ function updateSignal(signal) {
         signalBox.querySelector(".countdown");
 
 
-    // Remove active class
+    // Remove active state from all lights
+
     redLight.classList.remove("active");
 
     yellowLight.classList.remove("active");
@@ -332,9 +332,7 @@ function updateSignal(signal) {
     greenLight.classList.remove("active");
 
 
-    // =================================================
-    // TURN ON CORRECT LIGHT
-    // =================================================
+    // Turn on correct light
 
     if (signal.state === "RED") {
 
@@ -355,9 +353,7 @@ function updateSignal(signal) {
     }
 
 
-    // =================================================
-    // UPDATE SIGNAL TEXT
-    // =================================================
+    // Update signal text
 
     statusText.textContent =
         signal.state;
@@ -366,14 +362,15 @@ function updateSignal(signal) {
         signal.countdown;
 
 
-    // =================================================
-    // UPDATE TRAFFIC INFORMATION
-    // =================================================
+    // Update map marker and traffic card
 
     updateTrafficInformation(signal);
 
-}
 
+    // Update information panel
+
+    updateInformationPanel(signal);
+}
 
 
 // =====================================================
@@ -381,7 +378,6 @@ function updateSignal(signal) {
 // =====================================================
 
 function nextSignalState(signal) {
-
 
     if (signal.state === "RED") {
 
@@ -392,7 +388,6 @@ function nextSignalState(signal) {
 
     }
 
-
     else if (signal.state === "GREEN") {
 
         signal.state = "YELLOW";
@@ -402,7 +397,6 @@ function nextSignalState(signal) {
 
     }
 
-
     else if (signal.state === "YELLOW") {
 
         signal.state = "RED";
@@ -411,9 +405,7 @@ function nextSignalState(signal) {
             signalTimings.RED;
 
     }
-
 }
-
 
 
 // =====================================================
@@ -424,26 +416,103 @@ function updateCountdown() {
 
     signals.forEach(function(signal) {
 
-        // Reduce countdown
         signal.countdown--;
 
-
-        // If countdown reaches zero
         if (signal.countdown <= 0) {
 
-            // Change signal
             nextSignalState(signal);
 
         }
 
-
-        // Update webpage
         updateSignal(signal);
 
     });
-
 }
 
+
+// =====================================================
+// CLICKABLE SIGNAL INFORMATION
+// =====================================================
+
+signals.forEach(function(signal) {
+
+    const signalBox =
+        document.querySelector(
+            `.signal-${signal.element}`
+        );
+
+    if (!signalBox) {
+        return;
+    }
+
+    signalBox.addEventListener(
+        "click",
+        function() {
+
+            if (!signalInfoPanel) {
+                return;
+            }
+
+            if (selectedSignalName) {
+
+                selectedSignalName.textContent =
+                    signal.name;
+            }
+
+            if (selectedSignalStatus) {
+
+                selectedSignalStatus.textContent =
+                    signal.state;
+            }
+
+            if (selectedSignalCountdown) {
+
+                selectedSignalCountdown.textContent =
+                    signal.countdown;
+            }
+
+            if (selectedTrafficStatus) {
+
+                const trafficStatus =
+                    getTrafficStatus(signal.state);
+
+                selectedTrafficStatus.textContent =
+                    getTrafficText(trafficStatus);
+            }
+
+            signalInfoPanel.classList.add("show");
+
+        }
+    );
+
+});
+
+
+// =====================================================
+// CLOSE SIGNAL INFORMATION PANEL
+// =====================================================
+
+if (closeSignalPanel) {
+
+    closeSignalPanel.addEventListener(
+        "click",
+        function(event) {
+
+            // Prevent click from going to the signal/map
+            event.stopPropagation();
+
+            if (signalInfoPanel) {
+
+                signalInfoPanel.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+}
 
 
 // =====================================================
@@ -457,9 +526,11 @@ signals.forEach(function(signal) {
 });
 
 
-
 // =====================================================
 // RUN EVERY SECOND
 // =====================================================
 
-setInterval(updateCountdown, 1000);
+setInterval(
+    updateCountdown,
+    1000
+);

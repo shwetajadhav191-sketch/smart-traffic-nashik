@@ -149,7 +149,7 @@
                     <!-- ================= LIVE TRAFFIC SIGNALS ================= -->
 
                     <!-- CBS Signal -->
-                    <div class="signal signal-1">
+                    <div class="signal signal-1" data-signal="1">
 
                         <div class="traffic-signal">
                             <span class="light red"></span>
@@ -167,7 +167,7 @@
 
 
                     <!-- Canada Corner Signal -->
-                    <div class="signal signal-2">
+                    <div class="signal signal-2" data-signal="2">
 
                         <div class="traffic-signal">
                             <span class="light red"></span>
@@ -185,7 +185,7 @@
 
 
                     <!-- Trimbak Naka Signal -->
-                    <div class="signal signal-3">
+                    <div class="signal signal-3" data-signal="3">
 
                         <div class="traffic-signal">
                             <span class="light red"></span>
@@ -203,7 +203,7 @@
 
 
                     <!-- Mumbai Naka Signal -->
-                    <div class="signal signal-4">
+                    <div class="signal signal-4" data-signal="4">
 
                         <div class="traffic-signal">
                             <span class="light red"></span>
@@ -312,6 +312,56 @@
 
                 </div>
 
+                <!-- ================= SIGNAL INFORMATION PANEL ================= -->
+
+                <div class="signal-info-panel" id="signalInfoPanel">
+
+                    <button class="close-signal-panel" id="closeSignalPanel">
+                        &times;
+                    </button>
+
+                    <h3 id="selectedSignalName">
+                        Traffic Signal
+                    </h3>
+
+                    <div class="signal-detail">
+
+                        <span class="detail-label">
+                            Signal Status
+                        </span>
+
+                        <span id="selectedSignalStatus">
+                            RED
+                        </span>
+
+                    </div>
+
+                    <div class="signal-detail">
+
+                        <span class="detail-label">
+                            Time Remaining
+                        </span>
+
+                        <span>
+                            <span id="selectedSignalCountdown">20</span>
+                            sec
+                        </span>
+
+                    </div>
+
+                    <div class="signal-detail">
+
+                        <span class="detail-label">
+                            Traffic
+                        </span>
+
+                        <span id="selectedTrafficStatus">
+                            Heavy Traffic
+                        </span>
+
+                    </div>
+
+                </div>
             </div>
 
         </section>

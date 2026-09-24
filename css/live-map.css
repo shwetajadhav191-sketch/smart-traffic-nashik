@@ -859,3 +859,102 @@
 .area-card.status-changed {
     transform: scale(1.02);
 }
+
+/* =====================================================
+   SIGNAL INFORMATION PANEL
+   ===================================================== */
+
+.signal-info-panel {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    width: 220px;
+
+    padding: 18px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 14px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+
+    z-index: 20;
+
+    display: none;
+}
+
+
+/* Show panel */
+
+.signal-info-panel.show {
+    display: block;
+}
+
+
+/* Panel heading */
+
+.signal-info-panel h3 {
+    margin: 0 30px 15px 0;
+
+    font-size: 18px;
+}
+
+
+/* Close button */
+
+.close-signal-panel {
+    position: absolute;
+
+    top: 8px;
+    right: 10px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    line-height: 1;
+}
+
+
+/* Details */
+
+.signal-detail {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 9px 0;
+
+    border-bottom: 1px solid #eeeeee;
+
+    font-size: 14px;
+}
+
+
+/* Last row */
+
+.signal-detail:last-child {
+    border-bottom: none;
+}
+
+
+/* Labels */
+
+.detail-label {
+    font-weight: 600;
+}
+
+
+/* Make signal clickable */
+
+.signal {
+    cursor: pointer;
+}
