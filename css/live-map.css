@@ -958,3 +958,18 @@
 .signal {
     cursor: pointer;
 }
+
+/* ============================= */
+/* REAL NASHIK LEAFLET MAP */
+/* ============================= */
+
+#nashikMap {
+    width: 100%;
+    height: 430px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.leaflet-container {
+    font-family: 'Poppins', sans-serif;
+}
