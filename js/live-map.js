@@ -180,16 +180,16 @@ const signals = [
 // =====================================================
 
 const signalLocations = {
-    1:  { lat: 20.0059, lng: 73.7897 },
-    2:  { lat: 20.0006, lng: 73.7648 },
-    3:  { lat: 19.9972, lng: 73.7595 },
-    4:  { lat: 19.9778, lng: 73.7895 },
+    1: { lat: 20.0059, lng: 73.7897 },
+    2: { lat: 20.0006, lng: 73.7648 },
+    3: { lat: 19.9972, lng: 73.7595 },
+    4: { lat: 19.9778, lng: 73.7895 },
 
-    5:  { lat: 19.9975, lng: 73.8070 }, // Dwarka
-    6:  { lat: 20.0035, lng: 73.7800 }, // Shalimar
-    7:  { lat: 20.0115, lng: 73.7965 }, // Panchavati Karanja
-    8:  { lat: 20.0050, lng: 73.7755 }, // Ashok Stambh
-    9:  { lat: 20.0000, lng: 73.7900 }, // Raviwar Karanja
+    5: { lat: 19.9975, lng: 73.8070 }, // Dwarka
+    6: { lat: 20.0035, lng: 73.7800 }, // Shalimar
+    7: { lat: 20.0115, lng: 73.7965 }, // Panchavati Karanja
+    8: { lat: 20.0050, lng: 73.7755 }, // Ashok Stambh
+    9: { lat: 20.0000, lng: 73.7900 }, // Raviwar Karanja
     10: { lat: 19.9945, lng: 73.7505 }, // MICO Circle
     11: { lat: 19.9970, lng: 73.7475 }, // ABB Circle
     12: { lat: 19.9940, lng: 73.7430 }, // Old Gangapur Naka
@@ -215,9 +215,48 @@ function getMarkerColor(status) {
     return "#43a047";
 }
 
+
+// =====================================================
+// CREATE TRAFFIC SIGNAL ICON
+// =====================================================
+
+function createTrafficSignalIcon(state) {
+
+    return L.divIcon({
+
+        className: "traffic-signal-marker",
+
+        html: `
+            <div class="traffic-light">
+
+                <div class="traffic-bulb red-light ${
+                    state === "RED" ? "active" : ""
+                }"></div>
+
+                <div class="traffic-bulb yellow-light ${
+                    state === "YELLOW" ? "active" : ""
+                }"></div>
+
+                <div class="traffic-bulb green-light ${
+                    state === "GREEN" ? "active" : ""
+                }"></div>
+
+            </div>
+        `,
+
+        iconSize: [22, 48],
+iconAnchor: [11, 24]
+    });
+}
+
+
+// =====================================================
+// CREATE TRAFFIC SIGNAL MARKERS
+// =====================================================
+
 const signalMarkers = {};
 
-signals.forEach(function(signal) {
+signals.forEach(function (signal) {
 
     const location = signalLocations[signal.element];
 
@@ -225,32 +264,84 @@ signals.forEach(function(signal) {
         return;
     }
 
-    const status = getTrafficStatus(signal.state);
-
-    const marker = L.circleMarker(
-        [location.lat, location.lng],
+    // Four signals around one junction
+    const signalPositions = [
         {
-            radius: 9,
-            color: "#ffffff",
-            weight: 3,
-            fillColor: getMarkerColor(status),
-            fillOpacity: 1
+            lat: location.lat + 0.00035,
+            lng: location.lng - 0.00035
+        },
+        {
+            lat: location.lat + 0.00035,
+            lng: location.lng + 0.00035
+        },
+        {
+            lat: location.lat - 0.00035,
+            lng: location.lng - 0.00035
+        },
+        {
+            lat: location.lat - 0.00035,
+            lng: location.lng + 0.00035
         }
-    ).addTo(nashikMap);
+    ];
 
-    marker.bindTooltip(signal.name, {
-        direction: "top"
+    signalMarkers[signal.element] = [];
+
+    signalPositions.forEach(function (position) {
+
+        const signalIcon =
+            createTrafficSignalIcon(signal.state);
+
+        const marker = L.marker(
+            [position.lat, position.lng],
+            {
+                icon: signalIcon
+            }
+        ).addTo(nashikMap);
+
+        marker.bindTooltip(signal.name, {
+            direction: "top"
+        });
+
+        marker.on("click", function () {
+
+            if (!signalInfoPanel) {
+                return;
+            }
+
+            if (selectedSignalName) {
+                selectedSignalName.textContent =
+                    signal.name;
+            }
+
+            if (selectedSignalStatus) {
+                selectedSignalStatus.textContent =
+                    signal.state;
+            }
+
+            if (selectedSignalCountdown) {
+                selectedSignalCountdown.textContent =
+                    signal.countdown;
+            }
+
+            if (selectedTrafficStatus) {
+
+                const trafficStatus =
+                    getTrafficStatus(signal.state);
+
+                selectedTrafficStatus.textContent =
+                    getTrafficText(trafficStatus);
+            }
+
+            signalInfoPanel.classList.add("show");
+
+        });
+
+        signalMarkers[signal.element].push(marker);
+
     });
 
-    marker.bindPopup(`
-        <strong>${signal.name}</strong><br>
-        Status: ${getTrafficText(status)}<br>
-        Signal: ${signal.state}<br>
-        Countdown: ${signal.countdown} sec
-    `);
-
-    signalMarkers[signal.element] = marker;
 });
+
 
 // =====================================================
 // SIGNAL TIMINGS
@@ -313,26 +404,23 @@ function getTrafficText(status) {
 
 function updateMapMarker(signal) {
 
-    const marker = signalMarkers[signal.element];
+    const markers =
+        signalMarkers[signal.element];
 
-    if (!marker) {
+    if (!markers) {
         return;
     }
 
-    const status = getTrafficStatus(signal.state);
+    const newIcon =
+        createTrafficSignalIcon(signal.state);
 
-    marker.setStyle({
-        fillColor: getMarkerColor(status)
+    markers.forEach(function (marker) {
+
+        marker.setIcon(newIcon);
+
     });
 
-    marker.setPopupContent(`
-        <strong>${signal.name}</strong><br>
-        Status: ${getTrafficText(status)}<br>
-        Signal: ${signal.state}<br>
-        Countdown: ${signal.countdown} sec
-    `);
 }
-
 
 // =====================================================
 // UPDATE TRAFFIC AREA CARD
@@ -388,7 +476,7 @@ function updateTrafficCard(signal) {
 
     card.classList.add("status-changed");
 
-    setTimeout(function() {
+    setTimeout(function () {
 
         card.classList.remove("status-changed");
 
@@ -506,7 +594,7 @@ function nextSignalState(signal) {
 
 function updateCountdown() {
 
-    signals.forEach(function(signal) {
+    signals.forEach(function (signal) {
 
         signal.countdown--;
 
@@ -526,7 +614,7 @@ function updateCountdown() {
 // CLICKABLE SIGNAL INFORMATION
 // =====================================================
 
-signals.forEach(function(signal) {
+signals.forEach(function (signal) {
 
     const signalBox =
         document.querySelector(
@@ -539,7 +627,7 @@ signals.forEach(function(signal) {
 
     signalBox.addEventListener(
         "click",
-        function() {
+        function () {
 
             if (!signalInfoPanel) {
                 return;
@@ -588,7 +676,7 @@ if (closeSignalPanel) {
 
     closeSignalPanel.addEventListener(
         "click",
-        function(event) {
+        function (event) {
 
             // Prevent click from going to the signal/map
             event.stopPropagation();
@@ -611,7 +699,7 @@ if (closeSignalPanel) {
 // INITIAL DISPLAY
 // =====================================================
 
-signals.forEach(function(signal) {
+signals.forEach(function (signal) {
 
     updateSignal(signal);
 
