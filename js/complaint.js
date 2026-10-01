@@ -54,7 +54,6 @@ function submitComplaint() {
             .value
             .trim();
 
-
     let description =
         document
             .getElementById("description")
@@ -66,10 +65,7 @@ function submitComplaint() {
 
     if (selectedCategory === "") {
 
-        alert(
-            "Please select a problem category."
-        );
-
+        alert("Please select a problem category.");
         return;
     }
 
@@ -78,10 +74,7 @@ function submitComplaint() {
 
     if (location === "") {
 
-        alert(
-            "Please enter the location."
-        );
-
+        alert("Please enter the location.");
         return;
     }
 
@@ -90,63 +83,97 @@ function submitComplaint() {
 
     if (description === "") {
 
-        alert(
-            "Please describe the problem."
-        );
-
+        alert("Please describe the problem.");
         return;
     }
 
 
-    /* SHOW SUCCESS MESSAGE */
+    /* PREPARE DATA */
 
-    let success =
-        document.getElementById("successMessage");
+    let formData = new FormData();
 
-
-    success.style.display = "block";
-
-
-    success.innerHTML =
-        "<strong>Complaint submitted successfully!</strong><br><br>" +
-
-        "<strong>Category:</strong> " +
-        selectedCategory +
-
-        "<br>" +
-
-        "<strong>Location:</strong> " +
-        location +
-
-        "<br>" +
-
-        "<strong>Description:</strong> " +
-        description;
+    formData.append("complaint_type", selectedCategory);
+    formData.append("location", location);
+    formData.append("description", description);
 
 
-    /* CLEAR FORM */
+    /* SEND DATA TO PHP */
 
-    document
-        .getElementById("location")
-        .value = "";
+    fetch("submit_complaint.php", {
+        method: "POST",
+        body: formData
+    })
+
+    .then(function(response) {
+        return response.text();
+    })
+
+    .then(function(result) {
+
+        if (result.includes("Complaint submitted successfully!")) {
+
+            /* SHOW SUCCESS MESSAGE */
+
+            let success =
+                document.getElementById("successMessage");
+
+            success.style.display = "block";
+
+            success.innerHTML =
+                "<strong>Complaint submitted successfully!</strong><br><br>" +
+
+                "<strong>Category:</strong> " +
+                selectedCategory +
+
+                "<br>" +
+
+                "<strong>Location:</strong> " +
+                location +
+
+                "<br>" +
+
+                "<strong>Description:</strong> " +
+                description;
 
 
-    document
-        .getElementById("description")
-        .value = "";
+            /* CLEAR FORM */
+
+            document
+                .getElementById("location")
+                .value = "";
+
+            document
+                .getElementById("description")
+                .value = "";
 
 
-    /* REMOVE SELECTED CATEGORY */
+            /* REMOVE SELECTED CATEGORY */
 
-    document
-        .querySelectorAll(".category")
-        .forEach(function (item) {
+            document
+                .querySelectorAll(".category")
+                .forEach(function(item) {
 
-            item.classList.remove("selected");
+                    item.classList.remove("selected");
 
-        });
+                });
 
 
-    selectedCategory = "";
+            selectedCategory = "";
+
+        } else {
+
+            alert("Something went wrong: " + result);
+
+        }
+
+    })
+
+    .catch(function(error) {
+
+        console.error("Error:", error);
+
+        alert("Unable to submit complaint. Please try again.");
+
+    });
 
 }
