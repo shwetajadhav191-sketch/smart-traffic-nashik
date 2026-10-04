@@ -9,8 +9,9 @@
     <title>Route - Smart Traffic Nashik</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <!-- Route CSS -->
     <link rel="stylesheet" href="css/route.css">
@@ -118,12 +119,7 @@
 
                     <i class="fa-solid fa-location-dot"></i>
 
-                    <input
-                        type="text"
-                        id="from"
-                        placeholder="Enter starting location"
-                        autocomplete="off"
-                    >
+                    <input type="text" id="from" placeholder="Enter starting location" autocomplete="off">
 
                 </div>
 
@@ -136,11 +132,7 @@
 
             <!-- Swap Button -->
 
-            <button
-                type="button"
-                id="swapBtn"
-                class="swap-btn"
-                title="Swap locations">
+            <button type="button" id="swapBtn" class="swap-btn" title="Swap locations">
 
                 <i class="fa-solid fa-arrow-right-arrow-left"></i>
 
@@ -159,12 +151,7 @@
 
                     <i class="fa-solid fa-flag-checkered"></i>
 
-                    <input
-                        type="text"
-                        id="destination"
-                        placeholder="Enter destination"
-                        autocomplete="off"
-                    >
+                    <input type="text" id="destination" placeholder="Enter destination" autocomplete="off">
 
                 </div>
 
@@ -177,10 +164,7 @@
 
             <!-- Find Route Button -->
 
-            <button
-                type="button"
-                id="findRouteBtn"
-                class="route-btn">
+            <button type="button" id="findRouteBtn" class="route-btn">
 
                 <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -198,9 +182,7 @@
 
         <!-- Route Result -->
 
-        <section
-            id="routeResult"
-            class="card route-result hidden">
+        <section id="routeResult" class="card route-result hidden">
 
             <h2>
                 <i class="fa-solid fa-road"></i>
@@ -303,19 +285,7 @@
 
             <!-- Map -->
 
-            <div class="map-container">
-
-                <i class="fa-solid fa-map-location-dot"></i>
-
-                <h3>
-                    Map View
-                </h3>
-
-                <p>
-                    Interactive route map will appear here.
-                </p>
-
-            </div>
+            <div id="routeMap" class="map-container"></div>
 
         </section>
 
@@ -334,9 +304,7 @@
                 signal problem or other traffic issue.
             </p>
 
-            <a
-                href="complaint.html"
-                class="complaint-btn">
+            <a href="complaint.html" class="complaint-btn">
 
                 <i class="fa-solid fa-file-circle-exclamation"></i>
 
@@ -362,7 +330,7 @@
 
 
     <!-- JavaScript -->
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/route.js"></script>
 
 </body>

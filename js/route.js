@@ -3,6 +3,12 @@
 // Route JavaScript
 // ======================================
 
+// Initialize Route Map
+const routeMap = L.map("routeMap").setView([20.0059, 73.7897], 13);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(routeMap);
 
 // Get HTML elements
 
@@ -44,6 +50,9 @@ const fromSuggestions =
 
 const destinationSuggestions =
     document.getElementById("destinationSuggestions");
+
+
+let currentRoute = null;
 
 
 // ======================================
@@ -215,6 +224,80 @@ destinationInput.addEventListener(
     }
 );
 
+// ======================================
+// Get Coordinates
+// ======================================
+
+async function getCoordinates(locationName) {
+
+    const url =
+        `https://nominatim.openstreetmap.org/search?` +
+        `q=${encodeURIComponent(locationName + ", Nashik, Maharashtra, India")}` +
+        `&format=jsonv2&limit=1&countrycodes=in`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error("Location search failed.");
+    }
+
+    const data = await response.json();
+
+    if (data.length === 0) {
+        throw new Error(`Could not find ${locationName}.`);
+    }
+
+    return {
+        lat: parseFloat(data[0].lat),
+        lon: parseFloat(data[0].lon)
+    };
+}
+
+// ======================================
+// Find Road Route
+// ======================================
+
+async function findRoadRoute(from, destination) {
+
+    const fromCoordinates =
+        await getCoordinates(from);
+
+    const destinationCoordinates =
+        await getCoordinates(destination);
+
+
+    const routeUrl =
+        `https://router.project-osrm.org/route/v1/driving/` +
+        `${fromCoordinates.lon},${fromCoordinates.lat};` +
+        `${destinationCoordinates.lon},${destinationCoordinates.lat}` +
+        `?overview=full&geometries=geojson`;
+
+
+    const response =
+        await fetch(routeUrl);
+
+
+    if (!response.ok) {
+        throw new Error("Route service failed.");
+    }
+
+
+    const data =
+        await response.json();
+
+
+    if (
+        data.code !== "Ok" ||
+        !data.routes ||
+        data.routes.length === 0
+    ) {
+        throw new Error("No road route was found.");
+    }
+
+
+    return data.routes[0];
+}
+
 
 // ======================================
 // Find Route
@@ -222,7 +305,7 @@ destinationInput.addEventListener(
 
 findRouteBtn.addEventListener(
     "click",
-    function () {
+    async function () {
 
         const from =
             fromInput.value.trim();
@@ -281,17 +364,90 @@ findRouteBtn.addEventListener(
         destinationDisplay.textContent =
             destination;
 
+        // Find actual road route
 
-        // Demo route information
+try {
 
-        distance.textContent =
-            "8.5 km";
+    message.textContent =
+        "Finding the best road route...";
 
-        travelTime.textContent =
-            "22 minutes";
 
-        traffic.textContent =
-            "Moderate";
+    const route =
+        await findRoadRoute(
+            from,
+            destination
+        );
+
+
+    // Remove previous route
+
+    if (currentRoute) {
+        routeMap.removeLayer(currentRoute);
+    }
+
+
+    // Draw new route
+
+    currentRoute =
+        L.geoJSON(
+            route.geometry,
+            {
+                style: {
+                    color: "#7054e6",
+                    weight: 6,
+                    opacity: 0.85
+                }
+            }
+        ).addTo(routeMap);
+
+
+    // Zoom map to route
+
+    routeMap.fitBounds(
+        currentRoute.getBounds(),
+        {
+            padding: [30, 30]
+        }
+    );
+
+
+    // Distance
+
+    const distanceKm =
+        route.distance / 1000;
+
+    distance.textContent =
+        distanceKm.toFixed(1) + " km";
+
+
+    // Travel time
+
+    const timeMinutes =
+        Math.round(route.duration / 60);
+
+    travelTime.textContent =
+        timeMinutes + " minutes";
+
+
+    // Current traffic information
+
+    traffic.textContent =
+        "Route calculated";
+
+
+    message.textContent =
+        "Route found successfully!";
+
+
+}
+catch (error) {
+
+    console.error(error);
+
+    message.textContent =
+        "Unable to find the route. Please try again.";
+
+}
 
 
         // Show route result
@@ -299,7 +455,9 @@ findRouteBtn.addEventListener(
         routeResult.classList.remove(
             "hidden"
         );
-
+        setTimeout(() => {
+            routeMap.invalidateSize();
+        }, 100);
 
         // Hide suggestions
 
@@ -317,7 +475,7 @@ findRouteBtn.addEventListener(
 
 swapBtn.addEventListener(
     "click",
-    function () {
+   async function () {
 
         const temporary =
             fromInput.value;
