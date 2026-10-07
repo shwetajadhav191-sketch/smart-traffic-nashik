@@ -620,3 +620,9 @@ footer {
     }
 
 }
+/* Database alert styling */
+.database-alert {
+    width: 100%;
+    box-sizing: border-box;
+    grid-column: 1 / -1;
+}

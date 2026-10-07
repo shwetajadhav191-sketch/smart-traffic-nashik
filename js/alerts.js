@@ -30,7 +30,7 @@ async function loadDatabaseAlerts() {
                 icon = "🚗";
             }
 
-            alertCard.className = "alert-card";
+            alertCard.className = "alert-card database-alert";
 
             alertCard.innerHTML = `
         <div class="alert-icon ${iconClass}">
@@ -52,7 +52,7 @@ async function loadDatabaseAlerts() {
             <div class="alert-bottom">
 
                 <span class="time">
-                    ${alert.created_at}
+                    Just now
                 </span>
 
                 <span class="badge ${alert.severity.toLowerCase()}">
