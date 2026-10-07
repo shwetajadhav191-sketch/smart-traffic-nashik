@@ -1,5 +1,3 @@
-
-
 /* RESET */
 
 * {
@@ -86,7 +84,8 @@ body {
 .alerts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
+    row-gap: 0;
+column-gap: 30px;
 }
 
 
@@ -111,6 +110,8 @@ body {
     border: 2px solid transparent;
 
     transition: all 0.3s ease;
+
+    margin-bottom: 20px !important;
 }
 
 
@@ -620,6 +621,7 @@ footer {
     }
 
 }
+
 /* Database alert styling */
 .database-alert {
     width: 100%;

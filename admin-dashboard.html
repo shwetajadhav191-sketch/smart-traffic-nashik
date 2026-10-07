@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel - Smart Traffic Nashik</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f6ff;
+            color: #292e46;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #ffffff;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .header h1 {
+            color: #6850e8;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #777b8c;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        .admin-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .admin-title h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .admin-title p {
+            color: #777b8c;
+            font-size: 14px;
+        }
+
+        .admin-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .admin-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 7px 25px rgba(75, 85, 130, 0.10);
+            transition: 0.3s ease;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(75, 85, 130, 0.16);
+        }
+
+        .admin-icon {
+            font-size: 50px;
+            margin-bottom: 18px;
+        }
+
+        .admin-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .admin-card p {
+            color: #777b8c;
+            font-size: 14px;
+            line-height: 22px;
+            margin-bottom: 22px;
+        }
+
+        .admin-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #6850e8;
+            color: #ffffff;
+            padding: 11px 22px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .admin-btn:hover {
+            background: #563fd1;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 650px) {
+            .admin-options {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>🚦 Smart Traffic Nashik</h1>
+        <p>Administrator Panel</p>
+    </header>
+
+    <main class="container">
+
+        <div class="admin-title">
+            <h2>Admin Dashboard</h2>
+            <p>Manage traffic alerts and user complaints</p>
+        </div>
+
+        <div class="admin-options">
+
+            <div class="admin-card">
+                <div class="admin-icon">🚨</div>
+
+                <h3>Add Traffic Alert</h3>
+
+                <p>
+                    Add important traffic updates, road conditions,
+                    signal failures and other alerts.
+                </p>
+
+                <a href="admin.html" class="admin-btn">
+                    Add Alert
+                </a>
+            </div>
+
+
+            <div class="admin-card">
+                <div class="admin-icon">📋</div>
+
+                <h3>User Complaints</h3>
+
+                <p>
+                    View complaints submitted by users
+                    and approve or reject them.
+                </p>
+
+                <a href="admin_complaints.html" class="admin-btn">
+                    View Complaints
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
