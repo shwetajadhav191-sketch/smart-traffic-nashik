@@ -196,6 +196,44 @@
         }
 
         loadComplaints();
+        function updateComplaintStatus(id, status) {
+            const formData = new FormData();
+
+            formData.append("id", id);
+            formData.append("status", status);
+
+            fetch("update_complaint_status.php", {
+                method: "POST",
+                body: formData
+            })
+                .then(function (response) {
+                    return response.text();
+                })
+                .then(function (result) {
+
+                    if (result.includes("Complaint status updated successfully!")) {
+                        alert("Complaint status updated successfully!");
+                        loadComplaints();
+                    } else {
+                        alert("Something went wrong: " + result);
+                    }
+
+                })
+                .catch(function (error) {
+                    console.error(error);
+                    alert("Unable to update complaint status.");
+                });
+        }
+
+
+        function approveComplaint(id) {
+            updateComplaintStatus(id, "Approved");
+        }
+
+
+        function rejectComplaint(id) {
+            updateComplaintStatus(id, "Rejected");
+        }
     </script>
 </body>
 
