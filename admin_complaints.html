@@ -124,7 +124,11 @@
                     throw new Error("Unable to fetch complaints.");
                 }
 
-                const complaints = await response.json();
+                const allComplaints = await response.json();
+
+                const complaints = allComplaints.filter(function (complaint) {
+                    return complaint.status === "Pending";
+                });
 
                 const container =
                     document.getElementById("complaintsContainer");
