@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin - Complaints</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #eef5ff;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .admin-container {
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .admin-header {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #252b48;
+            margin: 0 0 8px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin: 0;
+        }
+
+        .complaint-card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+        }
+
+        .complaint-card h2 {
+            margin-top: 0;
+            color: #252b48;
+        }
+
+        .complaint-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            background: #fff0c9;
+            color: #a66a00;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .approve-btn,
+        .reject-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .approve-btn {
+            background: #28a745;
+        }
+
+        .reject-btn {
+            background: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <div class="admin-header">
+            <h1>📋 Admin - User Complaints</h1>
+
+            <p class="subtitle">
+                Review complaints submitted by users.
+            </p>
+        </div>
+
+        <div id="complaintsContainer">
+
+            <!-- Complaints will appear here -->
+
+        </div>
+
+    </div>
+    <script>
+        async function loadComplaints() {
+
+            try {
+
+                const response = await fetch("get_complaints.php");
+
+                if (!response.ok) {
+                    throw new Error("Unable to fetch complaints.");
+                }
+
+                const complaints = await response.json();
+
+                const container =
+                    document.getElementById("complaintsContainer");
+
+                if (complaints.length === 0) {
+
+                    container.innerHTML =
+                        "<p>No complaints found.</p>";
+
+                    return;
+                }
+
+                complaints.forEach(function (complaint) {
+
+                    const card = document.createElement("div");
+
+                    card.className = "complaint-card";
+
+                    card.innerHTML = `
+                <h2>${complaint.complaint_type}</h2>
+
+                <p>
+                    <strong>📍 Location:</strong>
+                    ${complaint.location}
+                </p>
+
+                <p>
+                    <strong>Description:</strong>
+                    ${complaint.description}
+                </p>
+
+                <p>
+                    <strong>Date:</strong>
+                    ${complaint.complaint_date}
+                </p>
+
+                <span class="status">
+                    ${complaint.status}
+                </span>
+
+                <div class="buttons">
+
+                    <button
+                        class="approve-btn"
+                        onclick="approveComplaint(${complaint.id})">
+                        Approve
+                    </button>
+
+                    <button
+                        class="reject-btn"
+                        onclick="rejectComplaint(${complaint.id})">
+                        Reject
+                    </button>
+
+                </div>
+            `;
+
+                    container.appendChild(card);
+
+                });
+
+            } catch (error) {
+
+                console.error("Error:", error);
+
+                document.getElementById("complaintsContainer").innerHTML =
+                    "<p>Unable to load complaints.</p>";
+            }
+        }
+
+        loadComplaints();
+    </script>
+</body>
+
+</html>
