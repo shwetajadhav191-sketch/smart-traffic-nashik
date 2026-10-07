@@ -97,6 +97,15 @@ function submitComplaint() {
     formData.append("description", description);
 
 
+    /* ADD COMPLAINT IMAGE */
+
+    let image = document.getElementById("complaintImage").files[0];
+
+    if (image) {
+        formData.append("complaint_image", image);
+    }
+
+
     /* SEND DATA TO PHP */
 
     fetch("submit_complaint.php", {
@@ -104,76 +113,76 @@ function submitComplaint() {
         body: formData
     })
 
-    .then(function(response) {
-        return response.text();
-    })
+        .then(function (response) {
+            return response.text();
+        })
 
-    .then(function(result) {
+        .then(function (result) {
 
-        if (result.includes("Complaint submitted successfully!")) {
+            if (result.includes("Complaint submitted successfully!")) {
 
-            /* SHOW SUCCESS MESSAGE */
+                /* SHOW SUCCESS MESSAGE */
 
-            let success =
-                document.getElementById("successMessage");
+                let success =
+                    document.getElementById("successMessage");
 
-            success.style.display = "block";
+                success.style.display = "block";
 
-            success.innerHTML =
-                "<strong>Complaint submitted successfully!</strong><br><br>" +
+                success.innerHTML =
+                    "<strong>Complaint submitted successfully!</strong><br><br>" +
 
-                "<strong>Category:</strong> " +
-                selectedCategory +
+                    "<strong>Category:</strong> " +
+                    selectedCategory +
 
-                "<br>" +
+                    "<br>" +
 
-                "<strong>Location:</strong> " +
-                location +
+                    "<strong>Location:</strong> " +
+                    location +
 
-                "<br>" +
+                    "<br>" +
 
-                "<strong>Description:</strong> " +
-                description;
-
-
-            /* CLEAR FORM */
-
-            document
-                .getElementById("location")
-                .value = "";
-
-            document
-                .getElementById("description")
-                .value = "";
+                    "<strong>Description:</strong> " +
+                    description;
 
 
-            /* REMOVE SELECTED CATEGORY */
+                /* CLEAR FORM */
 
-            document
-                .querySelectorAll(".category")
-                .forEach(function(item) {
+                document
+                    .getElementById("location")
+                    .value = "";
 
-                    item.classList.remove("selected");
+                document
+                    .getElementById("description")
+                    .value = "";
 
-                });
+
+                /* REMOVE SELECTED CATEGORY */
+
+                document
+                    .querySelectorAll(".category")
+                    .forEach(function (item) {
+
+                        item.classList.remove("selected");
+
+                    });
 
 
-            selectedCategory = "";
+                selectedCategory = "";
 
-        } else {
+            } else {
 
-            alert("Something went wrong: " + result);
+                alert("Something went wrong: " + result);
 
-        }
+            }
 
-    })
+        })
 
-    .catch(function(error) {
+        .catch(function (error) {
 
-        console.error("Error:", error);
+            console.error("Error:", error);
 
-        alert("Unable to submit complaint. Please try again.");
+            alert("Unable to submit complaint. Please try again.");
 
-    });
+        });
 
 }
