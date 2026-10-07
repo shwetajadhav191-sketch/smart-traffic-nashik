@@ -1,3 +1,34 @@
+function formatAlertTime(dateString) {
+    const alertDate = new Date(dateString);
+    const now = new Date();
+
+    const difference = Math.floor((now - alertDate) / 1000);
+
+    if (difference < 60) {
+        return "Just now";
+    }
+
+    const minutes = Math.floor(difference / 60);
+
+    if (minutes < 60) {
+        return minutes + (minutes === 1 ? " minute ago" : " minutes ago");
+    }
+
+    const hours = Math.floor(minutes / 60);
+
+    if (hours < 24) {
+        return hours + (hours === 1 ? " hour ago" : " hours ago");
+    }
+
+    const days = Math.floor(hours / 24);
+
+    if (days < 7) {
+        return days + (days === 1 ? " day ago" : " days ago");
+    }
+
+    return alertDate.toLocaleDateString();
+}
+
 async function loadDatabaseAlerts() {
 
     try {
@@ -12,8 +43,7 @@ async function loadDatabaseAlerts() {
 
         const alertsContainer = document.getElementById("alertsContainer");
 
-        alerts.forEach(function (alert) {
-
+        alerts.reverse().forEach(function(alert) {
             const alertCard = document.createElement("div");
 
             let iconClass = "blue";
@@ -51,9 +81,7 @@ async function loadDatabaseAlerts() {
 
             <div class="alert-bottom">
 
-                <span class="time">
-                    Just now
-                </span>
+                <span class="time">${formatAlertTime(alert.created_at)}</span>
 
                 <span class="badge ${alert.severity.toLowerCase()}">
                     ${alert.severity}
